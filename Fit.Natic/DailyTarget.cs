@@ -18,6 +18,8 @@ namespace Fit.Natic
         private Sleep sleep;
         public List<Meal> meals;
 
+        public DateTime date;
+
         // not sure if these 3 are needed or should be in Performance
         public int actualCalories; 
         public int actualSleep;
@@ -42,9 +44,17 @@ namespace Fit.Natic
         /* removes a meal from the generic list of meals
          *  returns true if successful, false if error
          */
-        public Boolean removeMeal()
+        public Boolean removeMeal(Meal meal)
         {
-
+            try
+            {
+                this.meals.Remove(meal);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
 
