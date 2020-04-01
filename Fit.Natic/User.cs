@@ -1,9 +1,11 @@
 ﻿using System;
 namespace Fit.Natic
 {
-    /* User class is instantiated when app is loaded,
+    /* User class is instantiated when app is loaded or when user page is loaded,
      * variables are read in from json, and when edited, saved to json
-     * 
+     *
+     * it is important that the data gets written back to json if it has been edited
+     *  this may need need to be checked in the PageAppearing/Disappearing methods
      */
 
 //TODO: create a function that reads in json to create the user object,
