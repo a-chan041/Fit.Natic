@@ -1,4 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
+using Newtonsoft.Json;
+
 namespace Fit.Natic
 {
     /* User class is instantiated when app is loaded or when user page is loaded,
@@ -8,16 +12,13 @@ namespace Fit.Natic
      *  this may need need to be checked in the PageAppearing/Disappearing methods
      */
 
-//TODO: create a function that reads in json to create the user object,
-        //function can either live here or in app.xaml.cs
-
     public class User
     {
         public string name { get; set; }
         public int age { get; set; }
-        public char gender { get; set; }
-        public float weight { get; set; }
-        public float height { get; set; }
+        public string gender { get; set; }
+        public float weight { get; set; } // in lbs
+        public float height { get; set; } // in inches
         public DailyTarget userTarget;
 
 
@@ -26,29 +27,66 @@ namespace Fit.Natic
 
         }
 
-        public readFromJson()
-        {
 
+        public User readFromJson()
+        {
+            User user;
+            var filePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "userInfo.json");
+
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                using (JsonReader reader = new JsonTextReader(sr))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    user = serializer.Deserialize<User>(reader);
+                }
+                //'reader' will be disposed by this point
+            }
+
+            return user;
+        }
+
+        public async System.Threading.Tasks.Task<bool> saveToJsonAsync()
+        {
+            string data = JsonConvert.SerializeObject(this);
+            try
+            {
+                var filePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "userInfo.json");
+                using (var writer = File.CreateText(filePath))
+                {
+                    await writer.WriteLineAsync(data);
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /* Would be used by front end if the user makes any changes to their daily target
          * Should take in a value for each of the daily target values and update all of them.
          */
         public Boolean updateDailyTarget() {
-            
+
+            //TODO: need to take in whatever parameters are necessary and update object variables
+
+
+            saveToJsonAsync();
+            return true;
         }
 
 
-        public string getDailyTarget()
+        public DailyTarget getDailyTarget()
         {
-
+            return this.userTarget;
         }
 
-        public string toString()
+        public void setDailyTarget(DailyTarget newTarget)
         {
-           
+            this.userTarget = newTarget;
         }
-
 
     }
 }
