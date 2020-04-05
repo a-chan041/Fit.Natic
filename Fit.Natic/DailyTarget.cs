@@ -28,6 +28,9 @@ namespace Fit.Natic
 
         public DailyTarget()
         {
+            this.calorieTarget = 0;
+            this.sleepTarget = 8;
+            this.workoutTarget = 30;
 
         }
 

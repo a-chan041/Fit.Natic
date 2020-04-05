@@ -19,30 +19,35 @@ namespace Fit.Natic
         public string gender { get; set; }
         public float weight { get; set; } // in lbs
         public float height { get; set; } // in inches
-        public DailyTarget userTarget;
+        public DailyTarget userTarget { get; set; }
 
-
+/*
         public User()
         {
-
+            this.name = "z";
+            this.age = 0;
+            this.gender = "z";
+            this.weight = 100;
+            this.height = 100;
+            this.userTarget = new DailyTarget();
         }
+  */      
 
-
-        public User readFromJson()
+        public static User readFromJson()
         {
-            User user;
+           // User user;
             var filePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "userInfo.json");
 
-            using (StreamReader sr = new StreamReader(filePath))
-            {
-                using (JsonReader reader = new JsonTextReader(sr))
-                {
-                    JsonSerializer serializer = new JsonSerializer();
-                    user = serializer.Deserialize<User>(reader);
-                }
-                //'reader' will be disposed by this point
-            }
+            User user = JsonConvert.DeserializeObject<User>(File.ReadAllText(filePath));
 
+            // deserialize JSON directly from a file
+            using (StreamReader file = File.OpenText(filePath))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                User user2 = (User)serializer.Deserialize(file, typeof(User));
+               // return user2;
+
+            }
             return user;
         }
 
