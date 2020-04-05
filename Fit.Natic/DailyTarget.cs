@@ -174,7 +174,37 @@ namespace Fit.Natic
         }
     }
 
+    public class Performance
+    {
+        public int CalorieDeficit;
+        public int WorkoutDeficit;
+        public int SleepDeficit;
 
+        public Performance(int calorieDeficit, int workoutDeficit, int sleepDeficit)
+        {
+            this.CalorieDeficit = calorieDeficit;
+            this.WorkoutDeficit = workoutDeficit;
+            this.SleepDeficit = sleepDeficit;
+        }
+
+        class Daily : Performance
+        {
+            public Daily(int calorie, int workout, int sleep) : base(calorie, workout, sleep)
+            { }
+        }
+
+        class Weekly : Performance
+        {
+            public Weekly(int calorie, int workout, int sleep) : base(calorie, workout, sleep)
+            { }
+        }
+
+        class Monthly : Performance
+        {
+            public Monthly(int calorie, int workout, int sleep) : base(calorie, workout, sleep)
+            { }
+        }
+    }
 
 
 
