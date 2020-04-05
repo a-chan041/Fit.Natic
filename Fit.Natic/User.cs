@@ -20,18 +20,7 @@ namespace Fit.Natic
         public float weight { get; set; } // in lbs
         public float height { get; set; } // in inches
         public DailyTarget userTarget { get; set; }
-
-/*
-        public User()
-        {
-            this.name = "z";
-            this.age = 0;
-            this.gender = "z";
-            this.weight = 100;
-            this.height = 100;
-            this.userTarget = new DailyTarget();
-        }
-  */      
+        
 
         public static User readFromJson()
         {
@@ -50,6 +39,7 @@ namespace Fit.Natic
             }
             return user;
         }
+
 
         public async System.Threading.Tasks.Task<bool> saveToJsonAsync()
         {
@@ -70,27 +60,20 @@ namespace Fit.Natic
             return true;
         }
 
+
         /* Would be used by front end if the user makes any changes to their daily target
          * Should take in a value for each of the daily target values and update all of them.
          */
-        public Boolean updateDailyTarget() {
-
-            //TODO: need to take in whatever parameters are necessary and update object variables
-
-
-            saveToJsonAsync();
-            return true;
+        public void setDailyTarget(DailyTarget newTarget)
+        {
+            this.userTarget = newTarget;
+            this.saveToJsonAsync();
         }
 
 
         public DailyTarget getDailyTarget()
         {
             return this.userTarget;
-        }
-
-        public void setDailyTarget(DailyTarget newTarget)
-        {
-            this.userTarget = newTarget;
         }
 
     }

@@ -14,8 +14,8 @@ namespace Fit.Natic
         public int sleepTarget;
         public int workoutTarget;
 
-        private Workout workout;
-        private Sleep sleep;
+        public Workout workout;
+        public Sleep sleep;
         public List<Meal> meals;
 
         public DateTime date;
@@ -31,6 +31,11 @@ namespace Fit.Natic
             this.calorieTarget = 0;
             this.sleepTarget = 8;
             this.workoutTarget = 30;
+
+            this.meals = new List<Meal>();
+            this.actualCalories = 0;
+            this.actualSleep = 0;
+            this.actualWorkout = 0;
 
         }
 
@@ -96,6 +101,28 @@ namespace Fit.Natic
                 //print error message saying you cant have negative sleep
             }
         }
+
+
+        public Workout getWorkout() {
+
+            return this.workout;
+        }
+
+        public bool setWorkout(string type, float duration, string notes) {
+            try {
+                this.workout.workoutType = type;
+                this.workout.duration = duration;
+                this.workout.notes = notes;
+                return true;
+            }
+            catch(Exception s) {
+
+                return false;
+
+            }
+
+        }
+
 
 
         /* returns just the notes from meal, sleep and workout
