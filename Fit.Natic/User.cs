@@ -24,13 +24,6 @@ namespace Fit.Natic
         /* readFromJson reads in the temporarily stored information
          * on the users info, their daily target, and goals achieved.
          *
-         * if the information stored in the json file is from the previous day
-         * (if todays date > date stored in json file)
-         *      read in the information to a user object, create a DailyResults object,
-         *      and store the daily results object in the database, then clear
-         *      the daily results and increment the date to start a new slate for the day.
-         *      The new updated User object and daily target object should be written back to json.
-         *
          */
         public static User readFromJson()
         {
