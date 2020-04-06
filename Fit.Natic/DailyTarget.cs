@@ -194,33 +194,58 @@ namespace Fit.Natic
     public class Performance
     {
         public int CalorieDeficit;
-        public int WorkoutDeficit;
+        public float WorkoutDeficit;
         public int SleepDeficit;
 
-        public Performance(int calorieDeficit, int workoutDeficit, int sleepDeficit)
+        public Performance(int calorieDeficit, float workoutDeficit, int sleepDeficit)
         {
             this.CalorieDeficit = calorieDeficit;
             this.WorkoutDeficit = workoutDeficit;
             this.SleepDeficit = sleepDeficit;
         }
 
+        public virtual void CalcPerformance(int calorieTarget, float workoutTarget, int sleepTarget, int actualCalories,
+            int actualWorkout, int actualSleep)
+        {
+            this.CalorieDeficit = calorieTarget - actualCalories;
+            this.WorkoutDeficit = workoutTarget - actualWorkout;
+            this.SleepDeficit = sleepTarget - actualSleep;
+        }
         class Daily : Performance
         {
-            public Daily(int calorie, int workout, int sleep) : base(calorie, workout, sleep)
+            public Daily(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
             { }
+
+            public override void CalcPerformance(int calorieTarget, float workoutTarget, int sleepTarget,
+                int actualCalories,
+                int actualWorkout, int actualSleep)
+            {
+                this.CalorieDeficit = calorieTarget - actualCalories;
+                this.WorkoutDeficit = workoutTarget - actualWorkout;
+                this.SleepDeficit = sleepTarget - actualSleep;
+            }
         }
 
         class Weekly : Performance
         {
-            public Weekly(int calorie, int workout, int sleep) : base(calorie, workout, sleep)
+            //quick reference for date
+            String Date = DateTime.Now.ToString();
+            public Weekly(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
             { }
+            //ADD FUNCTION TO FIND CURRENT WEEK FROM DATE 
+            //TOTAL ALL DAILY TARGETS IN WEEK
         }
+
 
         class Monthly : Performance
         {
-            public Monthly(int calorie, int workout, int sleep) : base(calorie, workout, sleep)
+            String Date = DateTime.Now.ToString();
+            public Monthly(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
             { }
+            //ADD FUNCTION TO FIND CURRENT MONTH FROM DATE
+            //TOTAL ALL DAILY TARGETS IN MONTH
         }
+
     }
 
 
