@@ -10,6 +10,8 @@ namespace Fit.Natic
     
     public class DailyTarget
     {
+        public DateTime date;
+
         public int calorieTarget;
         public int sleepTarget;
         public int workoutTarget;
@@ -17,8 +19,6 @@ namespace Fit.Natic
         public Workout workout;
         public Sleep sleep;
         public List<Meal> meals;
-
-        public DateTime date;
 
         // not sure if these 3 are needed or should be in Performance
         public int actualCalories; 
@@ -43,9 +43,9 @@ namespace Fit.Natic
          *  Takes the name of the meal as a string, number of calories as integer,
          *  and a string of the meal notes as parameters
          */
-        public void addMeal(string name, int cals, string notes)
+        public void logMeal(string name, int cals, string notes)
         {
-            this.meals.Add(new Meal(name, cals, notes));
+            this.meals.Add(new Meal { mealName = name, mealCalories = cals, notes = notes , mealTime = DateTime.Now});
         }
 
 
@@ -90,7 +90,7 @@ namespace Fit.Natic
          * can create a sleep object, only benefit to that would be
          * the sleep object has its own dedicate notes variable.
          */
-        public void enterSleep(int sleepDur)
+        public void logSleep(int sleepDur)
         {
             if(sleepDur >= 0 && actualSleep >=0)
             {
@@ -102,25 +102,27 @@ namespace Fit.Natic
             }
         }
 
-
+        /* just grabs the workout object from DailyTarget
+         */
         public Workout getWorkout() {
 
             return this.workout;
         }
 
-        public bool setWorkout(string type, float duration, string notes) {
-            try {
+        /* lets you update the workout information
+         */
+        public bool logWorkout(string type, float duration, string notes) {
+            try
+            {
                 this.workout.workoutType = type;
                 this.workout.duration = duration;
                 this.workout.notes = notes;
                 return true;
             }
-            catch(Exception s) {
-
+            catch (Exception s)
+            {
                 return false;
-
             }
-
         }
 
 
@@ -130,9 +132,25 @@ namespace Fit.Natic
         public string getNotes()
         {
             string allNotes;
-            allNotes = this.getMealNotes() + this.workout.notes + this.sleep.notes;
+            allNotes =  "Meal: " + this.getMealNotes() + "\n" +
+                    "Workout: " + this.workout.notes + "\n" +  "Sleep: " +
+                    this.sleep.notes;
             return allNotes;
         }
+
+        /* resets all logged information for the day to zero
+         * actualCalories, actualSleep, actualWorkout, meals, and all notes 
+         */
+        public void resetLoggedInfo()
+        {
+            this.actualCalories = 0;
+            this.actualSleep = 0;
+            this.actualWorkout = 0;
+            this.workout = new Workout();
+            this.meals = new List<Meal>();
+            this.sleep = new Sleep();
+        }
+
 
         /*returns the whole toString of the object formatted 
          */
@@ -147,7 +165,6 @@ namespace Fit.Natic
                         + "\t notes: " + this.sleep.notes + "\n";
         }
 
-
     }
 
     public class Meal
@@ -155,38 +172,16 @@ namespace Fit.Natic
         public string mealName { get; set; }
         public string notes { get; set; }
         public int mealCalories { get; set; }
-        public DateTime mealTime;
-
-        public Meal()
-        {
-            this.mealName = "poop chicken";
-            this.notes = "tasted shitty";
-            this.mealCalories = 1000;
-            this.mealTime = DateTime.Now;
-        }
-
-        public Meal(string name, int calories, string mealNotes)
-        {
-            this.mealName = name;
-            this.mealCalories = calories;
-            this.notes = mealNotes;
-            this.mealTime = DateTime.Now;
-        }
+        public DateTime mealTime { get; set; }
     }
 
 
     public class Workout
     {
-        public string workoutType;
+        public string workoutType { get; set; }
         public float duration { get; set; }
         public string notes { get; set; }
 
-        public Workout()
-        {
-            this.workoutType = "none";
-            this.duration = 0;
-            this.notes = "";
-        }
     }
 
     public class Sleep
@@ -194,11 +189,6 @@ namespace Fit.Natic
         public float duration { get; set; }
         public string notes { get; set; }
 
-        public Sleep()
-        {
-            this.duration = 0;
-            this.notes = "";
-        }
     }
 
     public class Performance

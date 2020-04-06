@@ -5,7 +5,7 @@
  *
  * Database is designed based off tutorial provided by Microsoft at https://docs.microsoft.com/en-us/xamarin/get-started/tutorials/local-database/?tabs=vswin
  */
-
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
@@ -18,26 +18,35 @@ namespace Fit.Natic
         public Database(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
-
-
-            /*using the DailyTarget class as the object type is tentative,
-             * may need to create a Metrics model or Performance model that
-             * combines some features of the dailytarget and performance and excludes others
-             * (eg: we dont need to store a list of meals from the daily target for every single day,
-             *  just store the calories consumed and calorie deficit or calorie target)
-             */
-            _database.CreateTableAsync<DailyTarget>().Wait();
+            _database.CreateTableAsync<DailyResults>().Wait();
         }
 
-        public Task<List<DailyTarget>> GetDailyTargetsAsync()
+        public Task<List<DailyResults>> GetDailyTargetsAsync()
         {
-            return _database.Table<DailyTarget>().ToListAsync();
+            return _database.Table<DailyResults>().ToListAsync();
         }
 
-        public Task<int> SaveTargetAsync(DailyTarget entry)
+        public Task<int> SaveTargetAsync(DailyResults entry)
         {
             return _database.InsertAsync(entry);
         }
+    }
+
+
+    // Daily Results class is the object that actually gets stored in the database
+    // Its information comes from the stored json file
+    public class DailyResults
+    {
+        [PrimaryKey]
+        public DateTime date { get; set; }
+        public int calorieTarget { get; set; }
+        public int sleepTarget { get; set; }
+        public int workoutTarget { get; set; }
+        public int caloriesLogged { get; set; }
+        public int sleepLogged { get; set; }
+        public int workoutLogged { get; set; }
+        public string notesLogged { get; set; }
+
     }
 
 }
