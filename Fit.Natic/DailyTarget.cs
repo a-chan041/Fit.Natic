@@ -33,6 +33,8 @@ namespace Fit.Natic
             this.workoutTarget = 30;
 
             this.meals = new List<Meal>();
+            this.workout = new Workout();
+            this.sleep = new Sleep();
             this.actualCalories = 0;
             this.actualSleep = 0;
             this.actualWorkout = 0;
@@ -46,6 +48,8 @@ namespace Fit.Natic
         public void logMeal(string name, int cals, string notes)
         {
             this.meals.Add(new Meal { mealName = name, mealCalories = cals, notes = notes , mealTime = DateTime.Now});
+            //updating the current days calorie intake
+            this.actualCalories += cals;
         }
 
 
@@ -57,6 +61,8 @@ namespace Fit.Natic
             try
             {
                 this.meals.Remove(meal);
+                //updating the current days calorie intake
+                this.actualCalories -= meal.mealCalories;
                 return true;
             }
             catch (Exception)
@@ -132,7 +138,7 @@ namespace Fit.Natic
         public string getNotes()
         {
             string allNotes;
-            allNotes =  "Meal: " + this.getMealNotes() + "\n" +
+            allNotes =  "Meals: \n" + this.getMealNotes() + "\n" +
                     "Workout: " + this.workout.notes + "\n" +  "Sleep: " +
                     this.sleep.notes;
             return allNotes;

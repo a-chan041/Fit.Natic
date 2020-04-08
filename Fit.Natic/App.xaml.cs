@@ -42,7 +42,7 @@ namespace Fit.Natic
          */
         public void loadData()
         {
-
+ 
             //read user info and daily target stored in json file
             appUser = User.readFromJson();
             todaysTarget = appUser.getDailyTarget();

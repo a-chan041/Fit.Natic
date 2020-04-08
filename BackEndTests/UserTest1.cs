@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Fit.Natic;
+
 namespace BackEndTests
 {
     public class UserTest1
@@ -9,38 +10,9 @@ namespace BackEndTests
         {
         }
 
-        [Test]
-        public void readFromJsonTest()
-        {
-
-            User testUser = User.readFromJson();
-
-            //make sure nothing is null
-            Assert.NotNull(testUser);
-            Assert.NotNull(testUser.name);
-            Assert.NotNull(testUser.age);
-            Assert.NotNull(testUser.gender);
-            Assert.NotNull(testUser.height);
-            Assert.NotNull(testUser.weight);
-            Assert.NotNull(testUser.userTarget);
-
-            //make sure the initialized object variables match what was in the json file
-
-            Assert.AreEqual("John Jane Doe", testUser.name);
-            Assert.AreEqual(18, testUser.age);
-            Assert.AreEqual("x", testUser.gender);
-            Assert.AreEqual(140.0, testUser.weight);
-            Assert.AreEqual(64.5, testUser.height);
-
-
-
-
-
-
-        }
 
         [Test]
-        public void saveToJsonTest()
+        public void saveToandReadFromJsonTest()
         {
 
             User testUser = new User();
@@ -50,9 +22,13 @@ namespace BackEndTests
             testUser.height = 62;
             testUser.weight = 180;
             testUser.userTarget = new DailyTarget();
-            testUser.userTarget.addMeal("pasta",1000,"was bomb");
+            testUser.userTarget.logMeal("pasta",1000,"was bomb");
             testUser.userTarget.sleepTarget = 2;
             testUser.userTarget.calorieTarget = 10000;
+            testUser.userTarget.logWorkout("bench press", 30, "got sweaty");
+            testUser.userTarget.logSleep(8);
+            testUser.userTarget.sleep.notes = "couldnt sleep";
+
 
             testUser.saveToJsonAsync();
 
@@ -61,22 +37,60 @@ namespace BackEndTests
 
 
             //make sure nothing is null
-            Assert.NotNull(testUser.gender);
-            Assert.NotNull(testUser);
-            Assert.NotNull(testUser.age);
-            Assert.NotNull(testUser.name);
-            Assert.NotNull(testUser.height);
-            Assert.NotNull(testUser.weight);
-            Assert.NotNull(testUser.userTarget);
+            Assert.NotNull(testUser2.gender);
+            Assert.NotNull(testUser2);
+            Assert.NotNull(testUser2.age);
+            Assert.NotNull(testUser2.name);
+            Assert.NotNull(testUser2.height);
+            Assert.NotNull(testUser2.weight);
+            Assert.NotNull(testUser2.userTarget);
 
             //make sure the initialized object variables match what was in the json file
 
-            Assert.AreEqual("MCD", testUser.name);
-            Assert.AreEqual(70, testUser.age);
-            Assert.AreEqual("m", testUser.gender);
-            Assert.AreEqual(180.0, testUser.weight);
-            Assert.AreEqual(62, testUser.height);
+            Assert.AreEqual("MCD", testUser2.name);
+            Assert.AreEqual(70, testUser2.age);
+            Assert.AreEqual("m", testUser2.gender);
+            Assert.AreEqual(180.0, testUser2.weight);
+            Assert.AreEqual(62, testUser2.height);
+
+            System.Console.WriteLine(testUser2.getDailyTarget().getNotes());
 
         }
+
+        [Test]
+
+        public void loadDatabaseTest()
+        {
+            User testUser = User.readFromJson();
+            DailyTarget testTarget = testUser.getDailyTarget();
+            DailyResults testDailyResults = new DailyResults {
+                date = testTarget.date.Date,
+                calorieTarget = testTarget.calorieTarget,
+                sleepTarget = testTarget.sleepTarget,
+                workoutTarget = testTarget.workoutTarget,
+                caloriesLogged = testTarget.actualCalories,
+                sleepLogged = testTarget.actualSleep,
+                workoutLogged = testTarget.actualWorkout,
+                notesLogged = " ",
+            };
+
+            App.Database.SaveTargetAsync(testDailyResults);
+
+            Assert.NotNull(App.Database.GetDailyTargetsAsync());
+            System.Console.WriteLine(App.Database.GetDailyTargetsAsync().ToString());
+
+
+        }
+
+        [Test]
+
+        public void searchDatabaseDateRangeTest()
+        {
+
+
+
+        }
+
+
     }
 }
