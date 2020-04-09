@@ -21,7 +21,7 @@ namespace Fit.Natic
             _database.CreateTableAsync<DailyResults>().Wait();
         }
 
-        public Task<List<DailyResults>> GetDailyTargetsAsync()
+        public Task<List<DailyResults>> GetDailyTargetsListAsync()
         {
             return _database.Table<DailyResults>().ToListAsync();
         }
@@ -30,6 +30,13 @@ namespace Fit.Natic
         {
             return _database.InsertAsync(entry);
         }
+
+        public Task<DailyResults> GetDayAsync(DateTime date)
+        {
+            date = date.Date;
+            return _database.GetAsync<DailyResults>(date);
+        }
+
     }
 
 
