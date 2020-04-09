@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Schema;
+using DateTime = System.DateTime;
+
 namespace Fit.Natic
 {
     // TODO: finish DailyTarget() method
@@ -235,11 +238,22 @@ namespace Fit.Natic
         class Weekly : Performance
         {
             //quick reference for date
-            String Date = DateTime.Now.ToString();
             public Weekly(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
             { }
             //ADD FUNCTION TO FIND CURRENT WEEK FROM DATE 
             //TOTAL ALL DAILY TARGETS IN WEEK
+            public void CalculateWeekly()
+            {
+                DayOfWeek date = DateTime.Today.DayOfWeek;
+
+                int total = 7 - (int)date;
+
+                //I need to try something different
+
+                //How to access each day from database
+
+            }
+
         }
 
 
