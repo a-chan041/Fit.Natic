@@ -31,11 +31,33 @@ namespace Fit.Natic
             return _database.InsertAsync(entry);
         }
 
-        public Task<DailyResults> GetDayAsync(DateTime date)
+        /*Given two DateTime objects, the database will return a list of all the 
+         * DailyResults stored in the db that fall within those dates, including
+         * the beginning and ending dates
+         */
+        public async Task<List<DailyResults>> GetDateRange(DateTime startDate, DateTime endDate)
         {
-            date = date.Date;
-            return _database.GetAsync<DailyResults>(date);
+            try
+            {
+                var query = _database.Table<DailyResults>().Where(s => s.date <= endDate && s.date >=startDate);
+                var result = await query.ToListAsync();
+                return result;
+
+            }
+            catch(Exception f) {
+                System.Console.WriteLine("GetDateRangeAsync db query error");
+                return null;
+            }
         }
+
+
+        /*returns the number of entries in database
+         */
+        public int Rowcount()
+        {
+            return  _database.Table<DailyResults>().CountAsync().Result;
+        }
+
 
     }
 

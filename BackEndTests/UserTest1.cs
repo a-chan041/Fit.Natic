@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Fit.Natic;
+using System.Collections.Generic;
 
 namespace BackEndTests
 {
@@ -14,7 +15,6 @@ namespace BackEndTests
         [Test]
         public void saveToandReadFromJsonTest()
         {
-
             User testUser = new User();
             testUser.name = "MCD";
             testUser.age = 70;
@@ -28,7 +28,6 @@ namespace BackEndTests
             testUser.userTarget.logWorkout("bench press", 30, "got sweaty");
             testUser.userTarget.logSleep(8);
             testUser.userTarget.sleep.notes = "couldnt sleep";
-
 
             testUser.saveToJsonAsync();
 
@@ -52,13 +51,12 @@ namespace BackEndTests
             Assert.AreEqual("m", testUser2.gender);
             Assert.AreEqual(180.0, testUser2.weight);
             Assert.AreEqual(62, testUser2.height);
-
             System.Console.WriteLine(testUser2.getDailyTarget().getNotes());
 
         }
 
-        [Test]
 
+        [Test]
         public void loadDatabaseTest()
         {
             User testUser = User.readFromJson();
@@ -73,23 +71,159 @@ namespace BackEndTests
                 workoutLogged = testTarget.actualWorkout,
                 notesLogged = " ",
             };
-
             App.Database.SaveTargetAsync(testDailyResults);
-
-            Assert.NotNull(App.Database.GetDailyTargetsAsync());
-            System.Console.WriteLine(App.Database.GetDailyTargetsAsync().ToString());
-
-
+            Assert.NotNull(App.Database.GetDailyTargetsListAsync());
         }
+
+
+        [Test]
+        public void searchDatabaseDateRangeTest()
+        {
+            DailyResults result1 = new DailyResults {
+                date = System.DateTime.Today.Date,
+                calorieTarget = 3000,
+                sleepTarget = 8,
+                workoutTarget = 60,
+                caloriesLogged = 1000,
+                sleepLogged = 2,
+                workoutLogged = 20,
+                notesLogged = "had a good day",
+
+            };
+
+            DailyResults result2 = new DailyResults
+            {
+                date = System.DateTime.Today.AddDays(-1).Date,
+                calorieTarget = 3000,
+                sleepTarget = 8,
+                workoutTarget = 60,
+                caloriesLogged = 2000,
+                sleepLogged = 7,
+                workoutLogged = 40,
+                notesLogged = "had a good day",
+
+            };
+
+            DailyResults result3 = new DailyResults
+            {
+                date = System.DateTime.Today.AddDays(-2).Date,
+                calorieTarget = 3000,
+                sleepTarget = 8,
+                workoutTarget = 60,
+                caloriesLogged = 3000,
+                sleepLogged = 8,
+                workoutLogged = 60,
+                notesLogged = "had a good day",
+
+            };
+
+            App.Database.SaveTargetAsync(result1);
+            App.Database.SaveTargetAsync(result2);
+            App.Database.SaveTargetAsync(result3);
+
+            var result = App.Database.GetDateRange(System.DateTime.Today.AddDays(-2).Date,System.DateTime.Today.Date ).Result;
+            System.Console.WriteLine("number of results from search: " + result.Count);
+
+            Assert.NotNull(App.Database.GetDailyTargetsListAsync());
+            Assert.NotNull(result);
+            //TODO: need to remove database entries that were made for the test
+        }
+
 
         [Test]
 
-        public void searchDatabaseDateRangeTest()
+        public void calcDailyTest()
         {
+            DailyTarget testTarget = User.readFromJson().getDailyTarget();
 
+            Performance.Daily daily = new Performance.Daily(0, 0, 0);
+
+
+            daily.CalcPerformance(testTarget.calorieTarget,testTarget.workoutTarget,
+                testTarget.sleepTarget, testTarget.actualCalories,testTarget.actualWorkout
+                , testTarget.actualSleep);
+
+
+            Assert.AreEqual(daily.CalorieDeficit, 9000);
+            Assert.AreEqual(daily.WorkoutDeficit, 30);
+            Assert.AreEqual(daily.SleepDeficit, -6);
 
 
         }
+
+
+        [Test]
+        public void calculateWeeklyTest()
+        {
+            Performance.Weekly weekly = new Performance.Weekly(0,0,0);
+            DailyResults result1 = new DailyResults
+            {
+                date = System.DateTime.Today.Date,
+                calorieTarget = 3000,
+                sleepTarget = 8,
+                workoutTarget = 60,
+                caloriesLogged = 1000,
+                sleepLogged = 2,
+                workoutLogged = 20,
+                notesLogged = "had a good day",
+
+            };
+
+            DailyResults result3 = new DailyResults
+            {
+                date = System.DateTime.Today.AddDays(-2).Date,
+                calorieTarget = 3000,
+                sleepTarget = 8,
+                workoutTarget = 60,
+                caloriesLogged = 3000,
+                sleepLogged = 8,
+                workoutLogged = 60,
+                notesLogged = "had a good day",
+
+            };
+
+            DailyResults result2 = new DailyResults
+            {
+                date = System.DateTime.Today.AddDays(-1).Date,
+                calorieTarget = 3000,
+                sleepTarget = 8,
+                workoutTarget = 60,
+                caloriesLogged = 2000,
+                sleepLogged = 7,
+                workoutLogged = 40,
+                notesLogged = "had a good day",
+
+            };
+
+
+
+            App.Database.SaveTargetAsync(result1);
+            App.Database.SaveTargetAsync(result3);
+            App.Database.SaveTargetAsync(result2);
+            
+
+           // System.Console.WriteLine(System.DateTime.Today);
+           // System.Console.WriteLine(System.DateTime.Today.AddDays(-2));
+           // System.Console.WriteLine(App.Database.Rowcount().Result);
+
+  //          Assert.NotNull(App.Database.GetDailyTargetsListAsync());
+            //System.Console.WriteLine(App.Database.GetDailyTargetsListAsync().ToString());
+
+//            Assert.NotNull(App.Database.GetDateRange(System.DateTime.Today.Date, System.DateTime.Today.AddDays(-2).Date));
+            //System.Console.WriteLine(App.Database.GetDateRange(System.DateTime.Today.Date, System.DateTime.Today.AddDays(-2).Date).ToString());
+
+    //        Assert.NotNull(weekly);
+
+           weekly.CalculateWeekly();
+           Assert.AreEqual(weekly.CalorieDeficit, 3000);
+           Assert.AreEqual(weekly.WorkoutDeficit, 60);
+           Assert.AreEqual(weekly.SleepDeficit, 7);
+
+        }
+
+    
+
+    
 
 
     }

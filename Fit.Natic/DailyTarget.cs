@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Xml.Schema;
 using DateTime = System.DateTime;
@@ -220,7 +221,8 @@ namespace Fit.Natic
             this.WorkoutDeficit = workoutTarget - actualWorkout;
             this.SleepDeficit = sleepTarget - actualSleep;
         }
-        class Daily : Performance
+
+        public class Daily : Performance
         {
             public Daily(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
             { }
@@ -235,29 +237,67 @@ namespace Fit.Natic
             }
         }
 
-        class Weekly : Performance
+        public class Weekly : Performance
         {
-            //quick reference for date
             public Weekly(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
             { }
+
+
             //ADD FUNCTION TO FIND CURRENT WEEK FROM DATE 
             //TOTAL ALL DAILY TARGETS IN WEEK
-            public void CalculateWeekly()
+
+            /*This method gets the current day, figures out what day in the week
+             * it is, then gets the date for the start of that week
+             * and queries the database for all the DailyResults from the
+             * start of that week, up to the current day. It receives the DailyResults
+             * objects in list, which it iterates through, calculating the difference
+             * between each days targets and actual results, adding them up
+             *
+             */
+            public  void CalculateWeekly()
             {
-                DayOfWeek date = DateTime.Today.DayOfWeek;
+                //get which day of the week it is
+                DayOfWeek todaysDate = DateTime.Today.DayOfWeek;
 
-                int total = 7 - (int)date;
+                // number of how many days to go back
+                int total = 7 - (int)todaysDate;
 
-                //I need to try something different
+                // get the date for however many days back
+                DateTime otherDate = DateTime.Today.AddDays(-(int)todaysDate).Date;
 
-                //How to access each day from database
+                //Call Database method to get list of results within date range
+                List<DailyResults> results = App.Database.GetDateRange(otherDate, DateTime.Today.Date).Result;
 
+                //Go through list of results and do math to calculate the deficits
+                foreach (DailyResults day in results)
+                 {
+                     System.Console.WriteLine(day.date);
+                     System.Console.WriteLine(day.caloriesLogged);
+                     System.Console.WriteLine(day.workoutLogged);
+                     System.Console.WriteLine(day.sleepLogged);
+
+                     System.Console.WriteLine();
+
+                     int tempDayCalorieDeficit = day.caloriesLogged - day.calorieTarget;
+                     int tempDayWorkoutDeficit = day.workoutLogged - day.workoutTarget;
+                     int tempDaySleepDeficit = day.sleepLogged - day.sleepTarget;
+
+                     this.CalorieDeficit += tempDayCalorieDeficit;
+                     this.WorkoutDeficit += tempDayWorkoutDeficit;
+                     this.SleepDeficit += tempDaySleepDeficit;
+
+                 }
+                 
+
+               // this.CalorieDeficit = 3000;
+               // this.WorkoutDeficit = 60;
+              //  this.SleepDeficit = 7;
             }
 
         }
 
 
-        class Monthly : Performance
+        public class Monthly : Performance
         {
             String Date = DateTime.Now.ToString();
             public Monthly(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
