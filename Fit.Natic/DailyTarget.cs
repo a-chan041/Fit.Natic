@@ -286,11 +286,11 @@ namespace Fit.Natic
 
             public void CalculateMonthly()
             {
-                int todaysDate = (int) DateTime.Today.DayOfWeek;
+                int todaysDate = (int) DateTime.Today.Day;
                 int month = (int) DateTime.Now.Month;
-                int numDays = 0;
+                //int numDays = 0;
 
-                //Switch to determine total days in month
+                //Possibly wont use
                 switch (month)
                 {
                     case 1:
@@ -331,8 +331,6 @@ namespace Fit.Natic
                         break;
                 }
 
-                //calculate offset
-                int total = numDays - todaysDate;
 
                 //calculate first day
                 DateTime otherDate = DateTime.Today.AddDays(-(int)todaysDate).Date;
