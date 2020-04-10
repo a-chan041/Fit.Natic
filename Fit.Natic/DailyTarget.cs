@@ -271,13 +271,7 @@ namespace Fit.Natic
                 //Go through list of results and do math to calculate the deficits
                 foreach (DailyResults day in results)
                  {
-                     System.Console.WriteLine(day.date);
-                     System.Console.WriteLine(day.caloriesLogged);
-                     System.Console.WriteLine(day.workoutLogged);
-                     System.Console.WriteLine(day.sleepLogged);
-
-                     System.Console.WriteLine();
-
+   
                      int tempDayCalorieDeficit = day.caloriesLogged - day.calorieTarget;
                      int tempDayWorkoutDeficit = day.workoutLogged - day.workoutTarget;
                      int tempDaySleepDeficit = day.sleepLogged - day.sleepTarget;
@@ -287,11 +281,6 @@ namespace Fit.Natic
                      this.SleepDeficit += tempDaySleepDeficit;
 
                  }
-                 
-
-               // this.CalorieDeficit = 3000;
-               // this.WorkoutDeficit = 60;
-              //  this.SleepDeficit = 7;
             }
 
         }
