@@ -91,15 +91,14 @@ namespace Fit.Natic
             return allMealNotes;
         }
 
-        /*We can either have just a function to enter the sleep, or we
-         * can create a sleep object, only benefit to that would be
-         * the sleep object has its own dedicate notes variable.
+        /* Logs the sleep duration and any notes about the sleep
          */
-        public void logSleep(int sleepDur)
+        public void logSleep(int sleepDur, string notes)
         {
             if(sleepDur >= 0 && actualSleep >=0)
             {
                 this.actualSleep += sleepDur;
+                this.sleep.notes = notes;
             }
             else
             {

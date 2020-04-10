@@ -26,7 +26,7 @@ namespace BackEndTests
             testUser.userTarget.sleepTarget = 2;
             testUser.userTarget.calorieTarget = 10000;
             testUser.userTarget.logWorkout("bench press", 30, "got sweaty");
-            testUser.userTarget.logSleep(8);
+            testUser.userTarget.logSleep(8, "");
             testUser.userTarget.sleep.notes = "couldnt sleep";
 
             testUser.saveToJsonAsync();
