@@ -195,24 +195,9 @@ namespace BackEndTests
 
             };
 
-
-
-            App.Database.SaveTargetAsync(result1);
-            App.Database.SaveTargetAsync(result3);
-            App.Database.SaveTargetAsync(result2);
-            
-
-           // System.Console.WriteLine(System.DateTime.Today);
-           // System.Console.WriteLine(System.DateTime.Today.AddDays(-2));
-           // System.Console.WriteLine(App.Database.Rowcount().Result);
-
-  //          Assert.NotNull(App.Database.GetDailyTargetsListAsync());
-            //System.Console.WriteLine(App.Database.GetDailyTargetsListAsync().ToString());
-
-//            Assert.NotNull(App.Database.GetDateRange(System.DateTime.Today.Date, System.DateTime.Today.AddDays(-2).Date));
-            //System.Console.WriteLine(App.Database.GetDateRange(System.DateTime.Today.Date, System.DateTime.Today.AddDays(-2).Date).ToString());
-
-    //        Assert.NotNull(weekly);
+           App.Database.SaveTargetAsync(result1);
+           App.Database.SaveTargetAsync(result3);
+           App.Database.SaveTargetAsync(result2);
 
            weekly.CalculateWeekly();
            Assert.AreEqual(weekly.CalorieDeficit, 3000);
