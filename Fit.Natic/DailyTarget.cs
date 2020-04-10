@@ -6,11 +6,6 @@ using DateTime = System.DateTime;
 
 namespace Fit.Natic
 {
-    // TODO: finish DailyTarget() method
-    // TODO: decide if Workout, Sleep, Meal classes are public or inner class of Daily Target
-    // TODO: finish removeMeal() method
-    // TODO: decide if "actual" variables need to be stored in DailyTarget class or another (performance, etc.) 
-    // TODO: create tests for objects and functions
     
     public class DailyTarget
     {
@@ -241,10 +236,6 @@ namespace Fit.Natic
         {
             public Weekly(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
             { }
-
-
-            //ADD FUNCTION TO FIND CURRENT WEEK FROM DATE 
-            //TOTAL ALL DAILY TARGETS IN WEEK
 
             /*This method gets the current day, figures out what day in the week
              * it is, then gets the date for the start of that week

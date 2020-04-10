@@ -27,19 +27,10 @@ namespace Fit.Natic
          */
         public static User readFromJson()
         {
-           // User user;
             var filePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "userInfo.json");
 
             User user = JsonConvert.DeserializeObject<User>(File.ReadAllText(filePath));
 
-            // deserialize JSON directly from a file
-            using (StreamReader file = File.OpenText(filePath))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                User user2 = (User)serializer.Deserialize(file, typeof(User));
-               // return user2;
-
-            }
             return user;
         }
 

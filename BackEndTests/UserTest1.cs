@@ -34,7 +34,6 @@ namespace BackEndTests
            
             User testUser2 = User.readFromJson();
 
-
             //make sure nothing is null
             Assert.NotNull(testUser2.gender);
             Assert.NotNull(testUser2);
@@ -126,7 +125,6 @@ namespace BackEndTests
 
             Assert.NotNull(App.Database.GetDailyTargetsListAsync());
             Assert.NotNull(result);
-            //TODO: need to remove database entries that were made for the test
         }
 
 
@@ -138,17 +136,13 @@ namespace BackEndTests
 
             Performance.Daily daily = new Performance.Daily(0, 0, 0);
 
-
             daily.CalcPerformance(testTarget.calorieTarget,testTarget.workoutTarget,
                 testTarget.sleepTarget, testTarget.actualCalories,testTarget.actualWorkout
                 , testTarget.actualSleep);
 
-
             Assert.AreEqual(daily.CalorieDeficit, 9000);
             Assert.AreEqual(daily.WorkoutDeficit, 30);
             Assert.AreEqual(daily.SleepDeficit, -6);
-
-
         }
 
 
@@ -200,9 +194,9 @@ namespace BackEndTests
            App.Database.SaveTargetAsync(result2);
 
            weekly.CalculateWeekly();
-           Assert.AreEqual(weekly.CalorieDeficit, 3000);
-           Assert.AreEqual(weekly.WorkoutDeficit, 60);
-           Assert.AreEqual(weekly.SleepDeficit, 7);
+           Assert.AreEqual(weekly.CalorieDeficit, -3000);
+           Assert.AreEqual(weekly.WorkoutDeficit, -60);
+           Assert.AreEqual(weekly.SleepDeficit, -7);
 
         }
 
