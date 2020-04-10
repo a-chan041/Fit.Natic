@@ -278,15 +278,89 @@ namespace Fit.Natic
 
         public class Monthly : Performance
         {
-            String Date = DateTime.Now.ToString();
+            
             public Monthly(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
             { }
             //ADD FUNCTION TO FIND CURRENT MONTH FROM DATE
             //TOTAL ALL DAILY TARGETS IN MONTH
-        }
 
+            public void CalculateMonthly()
+            {
+                int todaysDate = (int) DateTime.Today.DayOfWeek;
+                int month = (int) DateTime.Now.Month;
+                int numDays = 0;
+
+                //Switch to determine total days in month
+                switch (month)
+                {
+                    case 1:
+                        numDays = 31;
+                        break;
+                    case 2:
+                        numDays = 29;
+                        break;
+                    case 3:
+                        numDays = 31;
+                        break;
+                    case 4:
+                        numDays = 30;
+                        break;
+                    case 5:
+                        numDays = 31;
+                        break;
+                    case 6:
+                        numDays = 30;
+                        break;
+                    case 7:
+                        numDays = 31;
+                        break;
+                    case 8:
+                        numDays = 31;
+                        break;
+                    case 9:
+                        numDays = 30;
+                        break;
+                    case 10:
+                        numDays = 31;
+                        break;
+                    case 11:
+                        numDays = 30;
+                        break;
+                    case 12:
+                        numDays = 31;
+                        break;
+                }
+
+                //calculate offset
+                int total = numDays - todaysDate;
+
+                //calculate first day
+                DateTime otherDate = DateTime.Today.AddDays(-(int)todaysDate).Date;
+
+                //Retrieve daily results from database
+                List<DailyResults> results = App.Database.GetDateRange(otherDate, DateTime.Today.Date).Result;
+
+                //Total daily performance up to current day in month
+                foreach (DailyResults day in results)
+                {
+
+                    int tempDayCalorieDeficit = day.caloriesLogged - day.calorieTarget;
+                    int tempDayWorkoutDeficit = day.workoutLogged - day.workoutTarget;
+                    int tempDaySleepDeficit = day.sleepLogged - day.sleepTarget;
+
+                    this.CalorieDeficit += tempDayCalorieDeficit;
+                    this.WorkoutDeficit += tempDayWorkoutDeficit;
+                    this.SleepDeficit += tempDaySleepDeficit;
+
+                }
+
+            }
+        }
     }
 
 
-
 }
+
+
+
+
