@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace Fit.Natic
 {
-    public partial class ProfilePage : ContentPage
+    public partial class WorkoutsPage : ContentPage
     {
-        public ProfilePage()
+        public WorkoutsPage()
         {
             InitializeComponent();
         }
