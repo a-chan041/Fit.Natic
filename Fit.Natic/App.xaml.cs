@@ -87,10 +87,12 @@ namespace Fit.Natic
 
         protected override void OnStart()
         {
+
         }
 
         protected override void OnSleep()
         {
+            appUser.saveToJsonAsync();
         }
 
         protected override void OnResume()
