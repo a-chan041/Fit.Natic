@@ -194,15 +194,11 @@ namespace BackEndTests
            App.Database.SaveTargetAsync(result2);
 
            weekly.CalculateWeekly();
-           Assert.AreEqual(weekly.CalorieDeficit, -3000);
-           Assert.AreEqual(weekly.WorkoutDeficit, -60);
-           Assert.AreEqual(weekly.SleepDeficit, -7);
+           Assert.AreEqual(weekly.CalorieDeficit, -2000);
+           Assert.AreEqual(weekly.WorkoutDeficit, -40);
+           Assert.AreEqual(weekly.SleepDeficit, -6);
 
         }
-
-    
-
-    
 
 
     }

@@ -288,7 +288,7 @@ namespace Fit.Natic
             {
                 int todaysDate = (int) DateTime.Today.Day;
                 int month = (int) DateTime.Now.Month;
-                //int numDays = 0;
+                int numDays;
 
                 //Possibly wont use
                 switch (month)

@@ -7,7 +7,7 @@ namespace Fit.Natic
 {
     public partial class App : Application
     {
-        static Database database;
+        static Database database = App.Database;
         public static User appUser;
         public static DailyTarget todaysTarget;
         /*This Database object has a singleton design so that only one exists

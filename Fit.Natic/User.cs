@@ -27,11 +27,33 @@ namespace Fit.Natic
          */
         public static User readFromJson()
         {
-            var filePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "userInfo.json");
+            var filePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "userInfo.json");
+            try
+            {
+                User user = JsonConvert.DeserializeObject<User>(File.ReadAllText(filePath));
+                return user;
 
-            User user = JsonConvert.DeserializeObject<User>(File.ReadAllText(filePath));
+            }
+            catch (System.IO.FileNotFoundException e)
+            {
+                System.Console.WriteLine("couldnt find json file, creating a new one");
 
-            return user;
+                User user = new User();
+                user.name = "MCD";
+                user.age = 70;
+                user.gender = "m";
+                user.height = 62;
+                user.weight = 180;
+                user.userTarget = new DailyTarget();
+                user.userTarget.logMeal("pasta", 1000, "was bomb");
+                user.userTarget.sleepTarget = 2;
+                user.userTarget.calorieTarget = 10000;
+                user.userTarget.logWorkout("bench press", 30, "got sweaty");
+                user.userTarget.logSleep(8, "");
+                user.userTarget.sleep.notes = "couldnt sleep";
+                return user;
+            }
+            
         }
 
 
