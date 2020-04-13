@@ -10,7 +10,7 @@ namespace Fit.Natic
         {
             InitializeComponent();
 
-            MainPage = new ActivityPage();
+            MainPage = new NavPage();
         }
 
         protected override void OnStart()

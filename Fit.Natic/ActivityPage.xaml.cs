@@ -10,15 +10,22 @@ using Xamarin.Forms.Xaml;
 namespace Fit.Natic
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ActivityPage : TabbedPage
+    public partial class ActivityPage : ContentPage
     {
         public ActivityPage()
         {
             InitializeComponent();
 
-            Children.Add(new ProfPage());
-            Children.Add(new WorkoutsPage());
-            Children.Add(new RecipesPage());
+            //Children.Add(new ProfPage());
+            //Children.Add(new WorkoutsPage());
+            //Children.Add(new RecipesPage());
+        }
+
+        public async void LogSleep (object sender, EventArgs e)
+        {
+
+            await Navigation.PushAsync(new SleepLogPage());
+
         }
     }
 }
