@@ -29,7 +29,8 @@ namespace Fit.Natic
         {
             InitializeComponent();
             loadData();
-            MainPage = new MainPage();
+            MainPage = new NavPage();
+
         }
 
         /*Loads the user data from the json file, then checks the date 

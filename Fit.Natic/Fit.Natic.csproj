@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Xamarin.Forms" Version="4.3.0.908675" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
@@ -27,5 +28,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="userInfo.json" />
+=======
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.617" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
+    <PackageReference Include="Microcharts" Version="0.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="StatsPage.xaml" />
+    <EmbeddedResource Remove="ProfilePage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ProfilePage.xaml.cs" />
+>>>>>>> frontend
   </ItemGroup>
 </Project>
