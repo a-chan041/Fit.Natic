@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Fit.Natic.SleepLogPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fit.Natic.SleepLogPage"
+             Appearing="ContentPage_Appearing"
+             Disappearing="ContentPage_Disappearing">
     <StackLayout>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -15,7 +19,8 @@
             </Grid.RowDefinitions>
         </Grid>
         <Label Text="Log Sleep" HorizontalOptions="Center" VerticalOptions="Start" TextColor="#707070" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"></Label>
-        <Entry Placeholder="Duration" FontSize="12" BackgroundColor="#FFFFF" TextColor="#E4E4E4" ClearButtonVisibility="WhileEditing" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="0" VerticalOptions="End" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
-        <Entry Placeholder="Notes" FontSize="12" BackgroundColor="#FFFFF" TextColor="#E4E4E4" ClearButtonVisibility="WhileEditing" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="5" VerticalOptions="End" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
+        <Entry x:Name = "sleepLength" Keyboard = "Numeric" Placeholder="{Binding }" FontSize="12" BackgroundColor="#FFFFF" TextColor="#E4E4E4" ClearButtonVisibility="WhileEditing" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="0" VerticalOptions="End" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
+        <Entry x:Name = "sleepnotes" Placeholder="Notes" FontSize="12" BackgroundColor="#FFFFF" TextColor="#E4E4E4" ClearButtonVisibility="WhileEditing" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="5" VerticalOptions="End" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
+        <Button Text="Save" Pressed="Save_Button_Pressed"/>
     </StackLayout>
 </ContentPage>

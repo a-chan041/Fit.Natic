@@ -72,7 +72,7 @@ namespace Fit.Natic
         public int sleepTarget { get; set; }
         public int workoutTarget { get; set; }
         public int caloriesLogged { get; set; }
-        public int sleepLogged { get; set; }
+        public float sleepLogged { get; set; }
         public int workoutLogged { get; set; }
         public string notesLogged { get; set; }
 

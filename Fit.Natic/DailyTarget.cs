@@ -21,7 +21,7 @@ namespace Fit.Natic
 
         // not sure if these 3 are needed or should be in Performance
         public int actualCalories; 
-        public int actualSleep;
+        public float actualSleep;
         public int actualWorkout;
 
 
@@ -93,11 +93,11 @@ namespace Fit.Natic
 
         /* Logs the sleep duration and any notes about the sleep
          */
-        public void logSleep(int sleepDur, string notes)
+        public void logSleep(float sleepDur, string notes)
         {
             if(sleepDur >= 0 && actualSleep >=0)
             {
-                this.actualSleep += sleepDur;
+                this.actualSleep = sleepDur;
                 this.sleep.notes = notes;
             }
             else
@@ -199,7 +199,7 @@ namespace Fit.Natic
     {
         public int CalorieDeficit;
         public float WorkoutDeficit;
-        public int SleepDeficit;
+        public float SleepDeficit;
 
         public Performance(int calorieDeficit, float workoutDeficit, int sleepDeficit)
         {
@@ -264,7 +264,7 @@ namespace Fit.Natic
    
                      int tempDayCalorieDeficit = day.caloriesLogged - day.calorieTarget;
                      int tempDayWorkoutDeficit = day.workoutLogged - day.workoutTarget;
-                     int tempDaySleepDeficit = day.sleepLogged - day.sleepTarget;
+                     float tempDaySleepDeficit = day.sleepLogged - day.sleepTarget;
 
                      this.CalorieDeficit += tempDayCalorieDeficit;
                      this.WorkoutDeficit += tempDayWorkoutDeficit;
@@ -344,7 +344,7 @@ namespace Fit.Natic
 
                     int tempDayCalorieDeficit = day.caloriesLogged - day.calorieTarget;
                     int tempDayWorkoutDeficit = day.workoutLogged - day.workoutTarget;
-                    int tempDaySleepDeficit = day.sleepLogged - day.sleepTarget;
+                    float tempDaySleepDeficit = day.sleepLogged - day.sleepTarget;
 
                     this.CalorieDeficit += tempDayCalorieDeficit;
                     this.WorkoutDeficit += tempDayWorkoutDeficit;
