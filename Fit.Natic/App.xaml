@@ -1,5 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Fit.Natic.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Entry" TargetType="Entry">
+                <Setter Property="FontFamily" Value="Quicksand-Medium.ttf#Quicksand-Medium"/>
+                <Setter Property="BackgroundColor" Value="#FFFFF"/>
+                <Setter Property="TextColor" Value="#E4E4E4"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="Grid.RowSpan" Value="1"/>
+                <Setter Property="Grid.ColumnSpan" Value="4"/>
+            </Style>
+            <Style x:Key="Slider" TargetType="Slider">
+                <Setter Property="Maximum" Value="2000"/>
+                <Setter Property="Minimum" Value="0"/>
+                <Setter Property="ThumbColor" Value="Gray"/>
+                <Setter Property="MaximumTrackColor" Value="LightGray"/>
+                <Setter Property="MinimumTrackColor" Value="LightGray"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="Grid.ColumnSpan" Value="5"/>
+                <Setter Property="Grid.Column" Value="2"/>
+            </Style>
+            <Style x:Key="Label" TargetType="Label">
+                <Setter Property="TextColor" Value="#707070"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontFamily" Value="Quicksand-Medium.ttf#Quicksand-Medium"/>
+                <Setter Property="Grid.ColumnSpan" Value="5"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
