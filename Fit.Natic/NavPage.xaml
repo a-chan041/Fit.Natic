@@ -10,6 +10,9 @@
         </x:Arguments>
     </NavigationPage>
     <local:ProfPage/>
-    <local:WorkoutsPage/>
-    <local:RecipesPage/>
+    <NavigationPage>
+        <x:Arguments>
+            <local:ResourceNav/>
+        </x:Arguments>
+    </NavigationPage>
 </TabbedPage>

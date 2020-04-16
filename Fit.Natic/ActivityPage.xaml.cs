@@ -16,9 +16,6 @@ namespace Fit.Natic
         {
             InitializeComponent();
 
-            //Children.Add(new ProfPage());
-            //Children.Add(new WorkoutsPage());
-            //Children.Add(new RecipesPage());
         }
 
         public async void LogSleep (object sender, EventArgs e)
