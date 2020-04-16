@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Fit.Natic
@@ -23,6 +23,16 @@ namespace Fit.Natic
 
         void Resources_Disappearing(System.Object sender, System.EventArgs e)
         {
+        }
+
+        private void Button_OnClicked_Workouts(object sender, EventArgs e)
+        {
+            Launcher.OpenAsync("https://www.muscleandstrength.com/workout-routines");
+        }
+
+        private void Button_OnClicked_Meals(object sender, EventArgs e)
+        {
+            Launcher.OpenAsync("https://www.active.com/nutrition/articles/your-7-day-meal-plan-882313");
         }
     }
 }
