@@ -10,6 +10,10 @@ namespace Fit.Natic
         static Database database = App.Database;
         public static User appUser;
         public static DailyTarget todaysTarget;
+        public static bool firstTimeLaunched;
+        public static bool profileInfoEntered;
+        public static bool statsPageViewed;
+        public static bool resourcesPageViewed;
         /*This Database object has a singleton design so that only one exists
          * and runs continuously when the app is running
          */
@@ -30,6 +34,14 @@ namespace Fit.Natic
             InitializeComponent();
             loadData();
             MainPage = new NavPage();
+            //if its the first time the app is launched
+            if(firstTimeLaunched == true)
+            {
+                //push a edit profile page to the hierarchy to have them fill out their profile info
+
+                //then change to first time launched = false;
+                App.firstTimeLaunched = false;
+            }
 
         }
 

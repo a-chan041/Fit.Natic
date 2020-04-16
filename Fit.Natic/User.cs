@@ -31,19 +31,28 @@ namespace Fit.Natic
             try
             {
                 User user = JsonConvert.DeserializeObject<User>(File.ReadAllText(filePath));
+                App.firstTimeLaunched = false;
+                App.profileInfoEntered = true;
+                App.resourcesPageViewed = true;
+                App.statsPageViewed = true;
                 return user;
 
             }
             catch (System.IO.FileNotFoundException e)
             {
+                //if the file cant be found, the app assumes its being launched for the first time
+                App.firstTimeLaunched = true;
+                App.profileInfoEntered = false;
+                App.resourcesPageViewed = false;
+                App.statsPageViewed = false;
                 System.Console.WriteLine("couldnt find json file, creating a new one");
-
+                
                 User user = new User();
-                user.name = "MCD";
-                user.age = 70;
-                user.gender = "m";
-                user.height = 62;
-                user.weight = 180;
+                user.name = "New User";
+                user.age = 0;
+                user.gender = "unknown";
+                user.height = 0;
+                user.weight = 0;
                 user.userTarget = new DailyTarget();
                 user.userTarget.logMeal("pasta", 1000, "was bomb");
                 user.userTarget.sleepTarget = 2;

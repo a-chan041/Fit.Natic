@@ -9,10 +9,15 @@
             <local:ActivityPage/>
         </x:Arguments>
     </NavigationPage>
-    <local:ProfPage/>
-    <NavigationPage>
+    <NavigationPage IconImageSource="proficon.png">
+        <x:Arguments>
+             <local:ProfPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage  IconImageSource="book.png">
         <x:Arguments>
             <local:ResourceNav/>
         </x:Arguments>
     </NavigationPage>
+   
 </TabbedPage>

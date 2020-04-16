@@ -11,5 +11,18 @@ namespace Fit.Natic
         {
             InitializeComponent();
         }
+
+        void Resources_Appearing(System.Object sender, System.EventArgs e)
+        {
+            if (App.firstTimeLaunched == true || App.resourcesPageViewed == false)
+            {
+                DisplayAlert("Resources", "Use this page to find recipes, workouts, and calorie calculators", "OK");
+                App.resourcesPageViewed = true;
+            }
+        }
+
+        void Resources_Disappearing(System.Object sender, System.EventArgs e)
+        {
+        }
     }
 }
