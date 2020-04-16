@@ -16,7 +16,7 @@ namespace Fit.Natic
         {
             InitializeComponent();
         }
-        void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
+        void OnSliderValueChanged(object sender, ValueChangedEventArgs args)  
         {
             double value = args.NewValue;//Hello
             displayLabel.Text = String.Format("", value);
