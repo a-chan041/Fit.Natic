@@ -3,10 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fit.Natic.ActivityPage"
              xmlns:local="clr-namespace:Fit.Natic;assembly=Fit.Natic"
-             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
+             Appearing="ContentPage_Appearing"
+             Disappearing="ContentPage_Disappearing">
     <!--Pages can be added as references or inline-->
      <StackLayout>
          <Label Text="Activity Stats" HorizontalOptions="Center" VerticalOptions="Start" TextColor="#707070" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
-         <Button Text="Log Sleep" TextColor="White" BackgroundColor="#D97D54" Clicked="LogSleep" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"></Button>
+         <Button Text="Log Workout" Style="{StaticResource OrangeButton}" Pressed="LogWorkout"/>
+         <Button Text= "Log Meal" Style="{StaticResource OrangeButton}" Pressed="LogMeal" />
+         <Button Text="Log Sleep" Style="{StaticResource OrangeButton}" Pressed="LogSleep"/>
+
+         <ScrollView>
+             <StackLayout>
+             <Label Text= "Daily Progress" Style="{StaticResource TitleLabel}" />
+             <forms:ChartView x:Name = "TodayChart" HeightRequest="250" WidthRequest="250" />
+             <Grid Margin="0,25">
+                   <Grid.RowDefinitions>
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                         <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                    <Label Text= "Current Week Progress"  Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
+                    <forms:ChartView x:Name = "WeekChart"  HeightRequest="150" WidthRequest="150" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
+                    <Label Text= "Current Month Progress" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
+                    <forms:ChartView x:Name = "MonthChart" HeightRequest="150" WidthRequest="150" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
+             </Grid>
+             </StackLayout>
+         </ScrollView>
+
+
+
      </StackLayout>
 </ContentPage>

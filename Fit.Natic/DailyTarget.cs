@@ -12,7 +12,7 @@ namespace Fit.Natic
         public DateTime date;
 
         public int calorieTarget;
-        public int sleepTarget;
+        public float sleepTarget;
         public int workoutTarget;
 
         public Workout workout;
@@ -115,9 +115,10 @@ namespace Fit.Natic
 
         /* lets you update the workout information
          */
-        public bool logWorkout(string type, float duration, string notes) {
+        public bool logWorkout(string type, int duration, string notes) {
             try
             {
+                this.actualWorkout = duration;
                 this.workout.workoutType = type;
                 this.workout.duration = duration;
                 this.workout.notes = notes;
@@ -183,7 +184,7 @@ namespace Fit.Natic
     public class Workout
     {
         public string workoutType { get; set; }
-        public float duration { get; set; }
+        public int duration { get; set; }
         public string notes { get; set; }
 
     }
@@ -198,18 +199,20 @@ namespace Fit.Natic
     public class Performance
     {
         public int CalorieDeficit;
-        public float WorkoutDeficit;
+        public int WorkoutDeficit;
         public float SleepDeficit;
 
-        public Performance(int calorieDeficit, float workoutDeficit, int sleepDeficit)
+        public Performance() { }
+
+        public Performance(int calorieDeficit, int workoutDeficit, float sleepDeficit)
         {
             this.CalorieDeficit = calorieDeficit;
             this.WorkoutDeficit = workoutDeficit;
             this.SleepDeficit = sleepDeficit;
         }
 
-        public virtual void CalcPerformance(int calorieTarget, float workoutTarget, int sleepTarget, int actualCalories,
-            int actualWorkout, int actualSleep)
+        public virtual void CalcPerformance(int calorieTarget, int workoutTarget, float sleepTarget, int actualCalories,
+            int actualWorkout, float actualSleep)
         {
             this.CalorieDeficit = calorieTarget - actualCalories;
             this.WorkoutDeficit = workoutTarget - actualWorkout;
@@ -218,12 +221,12 @@ namespace Fit.Natic
 
         public class Daily : Performance
         {
-            public Daily(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
+            public Daily(int calorie, int workout, float sleep) : base(calorie, workout, sleep)
             { }
 
-            public override void CalcPerformance(int calorieTarget, float workoutTarget, int sleepTarget,
+            public override void CalcPerformance(int calorieTarget, int workoutTarget, float sleepTarget,
                 int actualCalories,
-                int actualWorkout, int actualSleep)
+                int actualWorkout, float actualSleep)
             {
                 this.CalorieDeficit = calorieTarget - actualCalories;
                 this.WorkoutDeficit = workoutTarget - actualWorkout;
@@ -233,7 +236,7 @@ namespace Fit.Natic
 
         public class Weekly : Performance
         {
-            public Weekly(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
+            public Weekly(int calorie, int workout, float sleep) : base(calorie, workout, sleep)
             { }
 
             /*This method gets the current day, figures out what day in the week
@@ -244,7 +247,7 @@ namespace Fit.Natic
              * between each days targets and actual results, adding them up
              *
              */
-            public  void CalculateWeekly()
+            public async void CalculateWeekly()
             {
                 //get which day of the week it is
                 DayOfWeek todaysDate = DateTime.Today.DayOfWeek;
@@ -256,21 +259,39 @@ namespace Fit.Natic
                 DateTime otherDate = DateTime.Today.AddDays(-(int)todaysDate).Date;
 
                 //Call Database method to get list of results within date range
-                List<DailyResults> results = App.Database.GetDateRange(otherDate, DateTime.Today.Date).Result;
+                System.Diagnostics.Debug.WriteLine("------------calling getDateRange from calculateWeekly----------");
+                List<DailyResults> results = await App.Database.GetDateRange(otherDate, DateTime.Today.Date);
 
-                //Go through list of results and do math to calculate the deficits
+                //Total daily performance up to current day in month
+                int tempCalLogged = 0, tempCalTarget = 0, tempWorkLogged = 0, tempWorkTarget = 0;
+                float tempSleepLogged = 0, tempSleepTarget = 0;
+
+                this.CalorieDeficit = 100;
+                this.WorkoutDeficit = 100;
+                this.SleepDeficit = 100;
+
                 foreach (DailyResults day in results)
-                 {
-   
-                     int tempDayCalorieDeficit = day.caloriesLogged - day.calorieTarget;
-                     int tempDayWorkoutDeficit = day.workoutLogged - day.workoutTarget;
-                     float tempDaySleepDeficit = day.sleepLogged - day.sleepTarget;
+                {
+                    //   int tempDayCalorieDeficit = day.caloriesLogged - day.calorieTarget;
+                    //   int tempDayWorkoutDeficit = day.workoutLogged - day.workoutTarget;
+                    //   float tempDaySleepDeficit = day.sleepLogged - day.sleepTarget;
 
-                     this.CalorieDeficit += tempDayCalorieDeficit;
-                     this.WorkoutDeficit += tempDayWorkoutDeficit;
-                     this.SleepDeficit += tempDaySleepDeficit;
+                    //   this.CalorieDeficit += tempDayCalorieDeficit;
+                    //   this.WorkoutDeficit += tempDayWorkoutDeficit;
+                    //   this.SleepDeficit += tempDaySleepDeficit;
 
-                 }
+                    tempCalLogged += day.caloriesLogged;
+                    tempCalTarget += day.calorieTarget;
+                    tempWorkLogged += day.workoutLogged;
+                    tempWorkTarget += day.workoutTarget;
+                    tempSleepLogged += day.sleepLogged;
+                    tempSleepTarget += day.sleepTarget;
+
+                }
+                if (tempCalTarget != 0) { this.CalorieDeficit = (tempCalLogged / tempCalTarget) * 100; }
+                if (tempWorkTarget != 0) { this.WorkoutDeficit = (tempWorkLogged / tempWorkTarget) * 100; }
+                if (tempSleepTarget != 0) { this.SleepDeficit = (tempSleepLogged / tempSleepTarget) * 100; }
+
             }
 
         }
@@ -279,12 +300,12 @@ namespace Fit.Natic
         public class Monthly : Performance
         {
             
-            public Monthly(int calorie, float workout, int sleep) : base(calorie, workout, sleep)
+            public Monthly(int calorie, int workout, float sleep) : base(calorie, workout, sleep)
             { }
             //ADD FUNCTION TO FIND CURRENT MONTH FROM DATE
             //TOTAL ALL DAILY TARGETS IN MONTH
 
-            public void CalculateMonthly()
+            public async void CalculateMonthly()
             {
                 int todaysDate = (int) DateTime.Today.Day;
                 int month = (int) DateTime.Now.Month;
@@ -336,21 +357,37 @@ namespace Fit.Natic
                 DateTime otherDate = DateTime.Today.AddDays(-(int)todaysDate).Date;
 
                 //Retrieve daily results from database
-                List<DailyResults> results = App.Database.GetDateRange(otherDate, DateTime.Today.Date).Result;
+                List<DailyResults> results = await  App.Database.GetDateRange(otherDate, DateTime.Today.Date);
 
                 //Total daily performance up to current day in month
+                int tempCalLogged =0, tempCalTarget=0, tempWorkLogged=0, tempWorkTarget=0;
+                float tempSleepLogged=0, tempSleepTarget=0;
+
+                this.CalorieDeficit = 100;
+                this.WorkoutDeficit = 100;
+                this.SleepDeficit = 100;
+
                 foreach (DailyResults day in results)
                 {
+                    //   int tempDayCalorieDeficit = day.caloriesLogged - day.calorieTarget;
+                    //   int tempDayWorkoutDeficit = day.workoutLogged - day.workoutTarget;
+                    //   float tempDaySleepDeficit = day.sleepLogged - day.sleepTarget;
 
-                    int tempDayCalorieDeficit = day.caloriesLogged - day.calorieTarget;
-                    int tempDayWorkoutDeficit = day.workoutLogged - day.workoutTarget;
-                    float tempDaySleepDeficit = day.sleepLogged - day.sleepTarget;
+                    //   this.CalorieDeficit += tempDayCalorieDeficit;
+                    //   this.WorkoutDeficit += tempDayWorkoutDeficit;
+                    //   this.SleepDeficit += tempDaySleepDeficit;
 
-                    this.CalorieDeficit += tempDayCalorieDeficit;
-                    this.WorkoutDeficit += tempDayWorkoutDeficit;
-                    this.SleepDeficit += tempDaySleepDeficit;
+                    tempCalLogged += day.caloriesLogged;
+                    tempCalTarget += day.calorieTarget;
+                    tempWorkLogged += day.workoutLogged;
+                    tempWorkTarget += day.workoutTarget;
+                    tempSleepLogged += day.sleepLogged;
+                    tempSleepTarget += day.sleepTarget;
 
                 }
+                if (tempCalTarget != 0) { this.CalorieDeficit = (tempCalLogged / tempCalTarget) * 100; }
+                if (tempWorkTarget != 0) { this.WorkoutDeficit = (tempWorkLogged / tempWorkTarget) * 100; }
+                if (tempSleepTarget != 0) { this.SleepDeficit = (tempSleepLogged / tempSleepTarget) * 100; }
 
             }
         }

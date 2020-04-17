@@ -11,7 +11,7 @@
 
     "workout": {
       "workoutType": "jog",
-      "duration": 60.0,
+      "duration": 60,
       "notes": "tripped and ate shit"
     },
 

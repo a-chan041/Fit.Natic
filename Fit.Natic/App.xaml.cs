@@ -33,6 +33,11 @@ namespace Fit.Natic
         {
             InitializeComponent();
             loadData();
+            todaysTarget.sleepTarget = 8;
+            todaysTarget.workoutTarget = 60;
+            todaysTarget.logSleep(6, "slept okay");
+            todaysTarget.logWorkout("bench",30, "got swolll");
+            todaysTarget.logMeal("pasta",2000,"saucyyy");
             MainPage = new NavPage();
             //if its the first time the app is launched
             if(firstTimeLaunched == true)

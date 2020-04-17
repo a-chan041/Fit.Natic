@@ -39,13 +39,14 @@ namespace Fit.Natic
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine("------------Trying to get  db---------");
                 var query = _database.Table<DailyResults>().Where(s => s.date <= endDate && s.date >=startDate);
                 var result = await query.ToListAsync();
                 return result;
 
             }
             catch(Exception f) {
-                System.Console.WriteLine("GetDateRangeAsync db query error");
+                System.Diagnostics.Debug.WriteLine("------------GetDateRangeAsync db query error----------");
                 return null;
             }
         }
@@ -69,7 +70,7 @@ namespace Fit.Natic
         [PrimaryKey]
         public DateTime date { get; set; }
         public int calorieTarget { get; set; }
-        public int sleepTarget { get; set; }
+        public float sleepTarget { get; set; }
         public int workoutTarget { get; set; }
         public int caloriesLogged { get; set; }
         public float sleepLogged { get; set; }

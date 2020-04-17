@@ -24,9 +24,10 @@
          <Button ImageSource="workouts.png" Text="Workout Resources" Clicked="Button_OnClicked_Workouts"
                  FontSize="12"  BackgroundColor="#FFFFF" Padding="30" HorizontalOptions="Center" VerticalOptions="End" 
                  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" ></Button>
-           <Button ImageSource="foodicon.png" Text="Food Resources" Padding="30" Clicked="Button_OnClicked_Meals"
+         <Button ImageSource="foodicon.png" Text="Food Resources" Padding="30" Clicked="Button_OnClicked_Meals"
                    FontSize="12" BackgroundColor="#FFFFF" HorizontalOptions="Center" 
-                   VerticalOptions="End" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2" ></Button>
+                   VerticalOptions="End" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="1" />
+
          
        </StackLayout>
    </ScrollView>

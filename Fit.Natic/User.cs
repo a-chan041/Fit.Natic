@@ -38,7 +38,7 @@ namespace Fit.Natic
                 return user;
 
             }
-            catch (System.IO.FileNotFoundException e)
+            catch (Exception e)
             {
                 //if the file cant be found, the app assumes its being launched for the first time
                 App.firstTimeLaunched = true;
@@ -55,10 +55,10 @@ namespace Fit.Natic
                 user.weight = 0;
                 user.userTarget = new DailyTarget();
                 user.userTarget.logMeal("pasta", 1000, "was bomb");
-                user.userTarget.sleepTarget = 2;
+                user.userTarget.sleepTarget = 8;
                 user.userTarget.calorieTarget = 10000;
                 user.userTarget.logWorkout("bench press", 30, "got sweaty");
-                user.userTarget.logSleep(8, "");
+                user.userTarget.logSleep(6, "");
                 user.userTarget.sleep.notes = "couldnt sleep";
                 return user;
             }
