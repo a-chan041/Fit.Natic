@@ -29,7 +29,7 @@ namespace Fit.Natic
 
             var dailyEntries = new[]
             {
-                new Entry((1 - (daily_stats.SleepDeficit / App.todaysTarget.sleepTarget)) * 100)
+                new Entry(daily_stats.SleepDeficit)
                 {
                     Label = "Sleep (hrs)",
 
@@ -38,14 +38,14 @@ namespace Fit.Natic
                 },
 
 
-                new Entry((1-(daily_stats.CalorieDeficit / App.todaysTarget.calorieTarget))*100)
+                new Entry(daily_stats.CalorieDeficit)
                 {
                     Label = "Calories",
                     ValueLabel = App.todaysTarget.actualCalories.ToString(),
                     Color = SKColor.Parse("#cc3366")
                 },
 
-                new Entry((1-(daily_stats.WorkoutDeficit / App.todaysTarget.workoutTarget))*100)
+                new Entry(daily_stats.WorkoutDeficit)
                 {
                     Label = "Workout (min)",
                     ValueLabel =  App.todaysTarget.actualWorkout.ToString(),

@@ -18,6 +18,7 @@ namespace Fit.Natic
             float length = Convert.ToSingle(sleepLength.Text);
             string notes = sleepnotes.Text;
             App.todaysTarget.logSleep(length,notes);
+            Navigation.PopAsync();
         }
 
         void ContentPage_Appearing(System.Object sender, System.EventArgs e)

@@ -54,11 +54,11 @@ namespace Fit.Natic
                 user.height = 0;
                 user.weight = 0;
                 user.userTarget = new DailyTarget();
-                user.userTarget.logMeal("pasta", 1000, "was bomb");
+                user.userTarget.logMeal("pasta", 2000, "was bomb");
                 user.userTarget.sleepTarget = 8;
                 user.userTarget.calorieTarget = 10000;
-                user.userTarget.logWorkout("bench press", 30, "got sweaty");
-                user.userTarget.logSleep(6, "");
+                user.userTarget.logWorkout("bench press", 20, "got sweaty");
+                user.userTarget.logSleep(4, "");
                 user.userTarget.sleep.notes = "couldnt sleep";
                 return user;
             }

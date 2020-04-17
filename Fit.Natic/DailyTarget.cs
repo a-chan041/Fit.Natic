@@ -214,9 +214,13 @@ namespace Fit.Natic
         public virtual void CalcPerformance(int calorieTarget, int workoutTarget, float sleepTarget, int actualCalories,
             int actualWorkout, float actualSleep)
         {
-            this.CalorieDeficit = calorieTarget - actualCalories;
-            this.WorkoutDeficit = workoutTarget - actualWorkout;
-            this.SleepDeficit = sleepTarget - actualSleep;
+            this.CalorieDeficit = 100;
+            this.WorkoutDeficit = 100;
+            this.SleepDeficit = 100;
+
+            if (calorieTarget != 0) { this.CalorieDeficit = (actualCalories/ calorieTarget)*100; }
+            if (workoutTarget != 0) { this.WorkoutDeficit = (actualWorkout / workoutTarget) * 100; }
+            if (sleepTarget != 0) { this.SleepDeficit = (actualSleep / sleepTarget) * 100; }
         }
 
         public class Daily : Performance
@@ -224,13 +228,16 @@ namespace Fit.Natic
             public Daily(int calorie, int workout, float sleep) : base(calorie, workout, sleep)
             { }
 
-            public override void CalcPerformance(int calorieTarget, int workoutTarget, float sleepTarget,
-                int actualCalories,
+            public override void CalcPerformance(int calorieTarget, int workoutTarget, float sleepTarget, int actualCalories,
                 int actualWorkout, float actualSleep)
             {
-                this.CalorieDeficit = calorieTarget - actualCalories;
-                this.WorkoutDeficit = workoutTarget - actualWorkout;
-                this.SleepDeficit = sleepTarget - actualSleep;
+                this.CalorieDeficit = 100;
+                this.WorkoutDeficit = 100;
+                this.SleepDeficit = 100;
+
+                if (calorieTarget != 0) { this.CalorieDeficit = (actualCalories / calorieTarget) * 100; }
+                if (workoutTarget != 0) { this.WorkoutDeficit = (actualWorkout / workoutTarget) * 100; }
+                if (sleepTarget != 0) { this.SleepDeficit = (actualSleep / sleepTarget) * 100; }
             }
         }
 
@@ -288,6 +295,13 @@ namespace Fit.Natic
                     tempSleepTarget += day.sleepTarget;
 
                 }
+                tempCalLogged += App.todaysTarget.actualCalories;
+                tempCalTarget += App.todaysTarget.calorieTarget;
+                tempWorkLogged += App.todaysTarget.actualWorkout;
+                tempWorkTarget += App.todaysTarget.workoutTarget;
+                tempSleepLogged += App.todaysTarget.actualSleep;
+                tempSleepTarget += App.todaysTarget.sleepTarget;
+
                 if (tempCalTarget != 0) { this.CalorieDeficit = (tempCalLogged / tempCalTarget) * 100; }
                 if (tempWorkTarget != 0) { this.WorkoutDeficit = (tempWorkLogged / tempWorkTarget) * 100; }
                 if (tempSleepTarget != 0) { this.SleepDeficit = (tempSleepLogged / tempSleepTarget) * 100; }
@@ -385,6 +399,13 @@ namespace Fit.Natic
                     tempSleepTarget += day.sleepTarget;
 
                 }
+                tempCalLogged += App.todaysTarget.actualCalories;
+                tempCalTarget += App.todaysTarget.calorieTarget;
+                tempWorkLogged += App.todaysTarget.actualWorkout;
+                tempWorkTarget += App.todaysTarget.workoutTarget;
+                tempSleepLogged += App.todaysTarget.actualSleep;
+                tempSleepTarget += App.todaysTarget.sleepTarget;
+
                 if (tempCalTarget != 0) { this.CalorieDeficit = (tempCalLogged / tempCalTarget) * 100; }
                 if (tempWorkTarget != 0) { this.WorkoutDeficit = (tempWorkLogged / tempWorkTarget) * 100; }
                 if (tempSleepTarget != 0) { this.SleepDeficit = (tempSleepLogged / tempSleepTarget) * 100; }
