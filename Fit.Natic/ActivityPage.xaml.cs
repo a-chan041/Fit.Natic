@@ -107,14 +107,14 @@ namespace Fit.Natic
         }
 
 
-        void LogWorkout(System.Object sender, System.EventArgs e)
+        public async void LogWorkout(System.Object sender, System.EventArgs e)
         {
-
+            await Navigation.PushAsync(new WorkoutLogPage());
         }
 
-        void LogMeal(System.Object sender, System.EventArgs e)
+        public async void LogMeal(System.Object sender, System.EventArgs e)
         {
-
+            await Navigation.PushAsync(new MealLogPage());
         }
 
         void ContentPage_Appearing(System.Object sender, System.EventArgs e)

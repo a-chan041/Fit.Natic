@@ -8,11 +8,7 @@
              Disappearing="ContentPage_Disappearing">
     <!--Pages can be added as references or inline-->
      <StackLayout>
-         <Label Text="Activity Stats" HorizontalOptions="Center" VerticalOptions="Start" TextColor="#707070" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
-         <Button Text="Log Workout" Style="{StaticResource OrangeButton}" Pressed="LogWorkout"/>
-         <Button Text= "Log Meal" Style="{StaticResource OrangeButton}" Pressed="LogMeal" />
-         <Button Text="Log Sleep" Style="{StaticResource OrangeButton}" Pressed="LogSleep"/>
-
+         <Label Text="Activity Stats" HorizontalOptions="Center" Grid.Row="2" VerticalOptions="Start" TextColor="#707070" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
          <ScrollView>
              <StackLayout>
              <Label Text= "Daily Progress" Style="{StaticResource TitleLabel}" />
@@ -20,6 +16,9 @@
              <Grid Margin="0,25">
                    <Grid.RowDefinitions>
                         <RowDefinition Height="20" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                          <Grid.ColumnDefinitions>
@@ -30,9 +29,12 @@
                     <forms:ChartView x:Name = "WeekChart"  HeightRequest="150" WidthRequest="150" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
                     <Label Text= "Current Month Progress" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
                     <forms:ChartView x:Name = "MonthChart" HeightRequest="150" WidthRequest="150" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
+                <Button Text= "Log Meal" Style="{StaticResource OrangeButton}" Grid.Row="2"  Grid.ColumnSpan="2"  HeightRequest="50"
+                        Pressed="LogMeal" />
+                <Button Text="Log Sleep" Style="{StaticResource OrangeButton}" Grid.Row="3" Grid.ColumnSpan="2"  HeightRequest="50" Pressed="LogSleep"/>
+                <Button Text="Log Workout" Style="{StaticResource OrangeButton}" Grid.Row="4" Grid.ColumnSpan="2" HeightRequest="50" Pressed="LogWorkout"/>
              </Grid>
              </StackLayout>
          </ScrollView>
-
      </StackLayout>
 </ContentPage>
