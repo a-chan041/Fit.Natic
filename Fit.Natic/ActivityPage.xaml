@@ -5,7 +5,7 @@
              xmlns:local="clr-namespace:Fit.Natic;assembly=Fit.Natic"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
              Appearing="ContentPage_Appearing"
-             Disappearing="ContentPage_Disappearing">
+             Disappearing="ContentPage_Disappearing" BackgroundColor="White">
     <!--Pages can be added as references or inline-->
      <StackLayout>
          <Label Text="Activity Stats" HorizontalOptions="Center" Grid.Row="2" VerticalOptions="Start" TextColor="#707070" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
@@ -17,9 +17,6 @@
                    <Grid.RowDefinitions>
                         <RowDefinition Height="20" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                          <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -29,11 +26,12 @@
                     <forms:ChartView x:Name = "WeekChart"  HeightRequest="150" WidthRequest="150" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
                     <Label Text= "Current Month Progress" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
                     <forms:ChartView x:Name = "MonthChart" HeightRequest="150" WidthRequest="150" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
-                <Button Text= "Log Meal" Style="{StaticResource OrangeButton}" Grid.Row="2"  Grid.ColumnSpan="2"  HeightRequest="50"
-                        Pressed="LogMeal" />
-                <Button Text="Log Sleep" Style="{StaticResource OrangeButton}" Grid.Row="3" Grid.ColumnSpan="2"  HeightRequest="50" Pressed="LogSleep"/>
-                <Button Text="Log Workout" Style="{StaticResource OrangeButton}" Grid.Row="4" Grid.ColumnSpan="2" HeightRequest="50" Pressed="LogWorkout"/>
+
              </Grid>
+                 <Button Text= "Log Meal" Style="{StaticResource OrangeButton}" HeightRequest="50"
+                        Pressed="LogMeal" />
+                <Button Text="Log Sleep" Style="{StaticResource OrangeButton}"  HeightRequest="50" Pressed="LogSleep"/>
+                <Button Text="Log Workout" Style="{StaticResource OrangeButton}" HeightRequest="50" Pressed="LogWorkout"/>
              </StackLayout>
          </ScrollView>
      </StackLayout>

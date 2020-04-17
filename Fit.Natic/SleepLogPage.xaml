@@ -5,11 +5,18 @@
              Appearing="ContentPage_Appearing"
              Disappearing="ContentPage_Disappearing">
     <StackLayout>
+        <Label Text="Log Sleep" Margin = "0,10,0,0" Style = "{StaticResource TitleLabel}" />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -17,10 +24,10 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <Entry x:Name = "sleepLength" Keyboard = "Numeric" Placeholder="Duration (in hours)" FontSize="12" BackgroundColor="#FFFFF" TextColor="#E4E4E4" ClearButtonVisibility="WhileEditing" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="2" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
+        <Entry x:Name = "sleepnotes" Placeholder="Notes" FontSize="12" BackgroundColor="#FFFFF" TextColor="#E4E4E4" ClearButtonVisibility="WhileEditing" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="4"  FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
         </Grid>
-        <Label Text="Log Sleep" HorizontalOptions="Center" VerticalOptions="Start" TextColor="#707070" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"></Label>
-        <Entry x:Name = "sleepLength" Keyboard = "Numeric" Placeholder="{Binding }" FontSize="12" BackgroundColor="#FFFFF" TextColor="#E4E4E4" ClearButtonVisibility="WhileEditing" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="0" VerticalOptions="End" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
-        <Entry x:Name = "sleepnotes" Placeholder="Notes" FontSize="12" BackgroundColor="#FFFFF" TextColor="#E4E4E4" ClearButtonVisibility="WhileEditing" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="5" VerticalOptions="End" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
-        <Button Text="Save" Pressed="Save_Button_Pressed" Style="{StaticResource OrangeButton}"/>
+        
+        <Button Text="Save" Margin = "40,200,40,0" Pressed="Save_Button_Pressed" Style="{StaticResource OrangeButton}"/>
     </StackLayout>
 </ContentPage>

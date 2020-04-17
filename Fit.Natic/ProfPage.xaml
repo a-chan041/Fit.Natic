@@ -42,8 +42,8 @@
                     <Entry x:Name ="NameEntry" Placeholder="{Binding name}" Style="{StaticResource Entry}" Grid.Row="3" Grid.Column="0" ClearButtonVisibility="WhileEditing"/>
                     <!--<Label Text="Gender" Grid.Row="2" Grid.Column="5"  VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>-->
                     <Entry x:Name ="GenderEntry" Placeholder="{Binding gender}" Style="{StaticResource Entry}" Grid.Row="3" Grid.Column="5" ClearButtonVisibility="WhileEditing"/>
-                    <Entry x:Name="HeightEntry" Placeholder="Height (Ex. 6'2)" Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="0" ClearButtonVisibility="WhileEditing"/>
-                    <Entry x:Name="WeightEntry" Placeholder="Weight" Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="5" ClearButtonVisibility="WhileEditing"/>
+                    <Entry x:Name="HeightEntry" Keyboard = "Numeric" Placeholder="Height(Ex. 6'2)" Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="0" ClearButtonVisibility="WhileEditing"/>
+                    <Entry x:Name="WeightEntry" Keyboard = "Numeric" Placeholder="Weight" Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="5" ClearButtonVisibility="WhileEditing"/>
                     <Entry x:Name="FitnessLevel" Placeholder="Fitness Level" Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="0" ClearButtonVisibility="WhileEditing"/> 
                     <Entry x:Name="FitnessGoal" Placeholder="Fitness Goal" Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="5" ClearButtonVisibility="WhileEditing"/>
                     <Label Text="Calorie Target" Grid.Row="6" Grid.Column="3" VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>

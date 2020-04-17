@@ -39,6 +39,7 @@ namespace Fit.Natic
             todaysTarget.logSleep(6, "slept okay");
             todaysTarget.logWorkout("bench",30, "got swolll");
             todaysTarget.logMeal("pasta",1000,"saucyyy");
+            appUser.setDailyTarget(todaysTarget);
             MainPage = new NavPage();
             //if its the first time the app is launched
             if(firstTimeLaunched == true)
@@ -90,11 +91,11 @@ namespace Fit.Natic
                 //reset all the logged info and notes, but not the target info
                 todaysTarget.resetLoggedInfo();
 
-                //assign todays target back to the appUser
+                //assign todays target back to the appUser and this function saves it to json also
                 appUser.setDailyTarget(todaysTarget);
 
-                //store the updated info back json
-                appUser.saveToJsonAsync();
+                //store the updated info back json -> redundant, setDailyTarget already saves it to json
+                //appUser.saveToJsonAsync();
 
             }
             else if(appUser.getDailyTarget().date.Date == DateTime.Today.Date)
@@ -110,7 +111,8 @@ namespace Fit.Natic
 
         protected override void OnSleep()
         {
-            appUser.saveToJsonAsync();
+            //the todaysTarget object could have been modified, which needs to be reassigned back to the user and saved to json
+            appUser.setDailyTarget(todaysTarget);
         }
 
         protected override void OnResume()

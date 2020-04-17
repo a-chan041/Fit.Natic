@@ -27,7 +27,7 @@ namespace Fit.Natic
 
         public DailyTarget()
         {
-            this.calorieTarget = 0;
+            this.calorieTarget = 20000;
             this.sleepTarget = 8;
             this.workoutTarget = 30;
 
@@ -120,7 +120,7 @@ namespace Fit.Natic
             {
                 this.actualWorkout = duration;
                 this.workout.workoutType = type;
-                this.workout.duration = duration;
+                this.workout.duration +=duration;
                 this.workout.notes = notes;
                 return true;
             }
@@ -302,9 +302,9 @@ namespace Fit.Natic
                 tempSleepLogged += App.todaysTarget.actualSleep;
                 tempSleepTarget += App.todaysTarget.sleepTarget;
 
-                if (tempCalTarget != 0) { this.CalorieDeficit = (tempCalLogged / tempCalTarget) * 100; }
-                if (tempWorkTarget != 0) { this.WorkoutDeficit = (tempWorkLogged / tempWorkTarget) * 100; }
-                if (tempSleepTarget != 0) { this.SleepDeficit = (tempSleepLogged / tempSleepTarget) * 100; }
+                if (tempCalTarget != 0) { this.CalorieDeficit = ((tempCalLogged / tempCalTarget) * 100) ; }
+                if (tempWorkTarget != 0) { this.WorkoutDeficit = ((tempWorkLogged / tempWorkTarget) * 100)  ; }
+                if (tempSleepTarget != 0) { this.SleepDeficit = ((tempSleepLogged / tempSleepTarget) * 100) ; }
 
             }
 

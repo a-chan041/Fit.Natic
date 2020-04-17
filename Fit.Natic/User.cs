@@ -45,7 +45,7 @@ namespace Fit.Natic
                 App.profileInfoEntered = false;
                 App.resourcesPageViewed = false;
                 App.statsPageViewed = false;
-                System.Console.WriteLine("couldnt find json file, creating a new one");
+                System.Diagnostics.Debug.WriteLine("----------couldnt find user info json file, creating a new one-----------");
                 
                 User user = new User();
                 user.name = "New User";
@@ -54,12 +54,13 @@ namespace Fit.Natic
                 user.height = 0;
                 user.weight = 0;
                 user.userTarget = new DailyTarget();
-                user.userTarget.logMeal("pasta", 2000, "was bomb");
+                //user.userTarget.logMeal("pasta", 2000, "was bomb");
                 user.userTarget.sleepTarget = 8;
-                user.userTarget.calorieTarget = 10000;
-                user.userTarget.logWorkout("bench press", 20, "got sweaty");
-                user.userTarget.logSleep(4, "");
-                user.userTarget.sleep.notes = "couldnt sleep";
+                user.userTarget.calorieTarget = 20000;
+                user.userTarget.workoutTarget = 60;
+                //user.userTarget.logWorkout("bench press", 20, "got sweaty");
+                //user.userTarget.logSleep(4, "");
+                //user.userTarget.sleep.notes = "couldnt sleep";
                 return user;
             }
             
