@@ -38,7 +38,7 @@ namespace Fit.Natic
 
         void resetBinding()
         {
-            DailyTarget target = App.appUser.getDailyTarget();
+            DailyTarget target = App.todaysTarget;
             this.BindingContext = null;
             this.BindingContext = App.appUser;
             WorkoutGoal.Text = target.workoutTarget.ToString();

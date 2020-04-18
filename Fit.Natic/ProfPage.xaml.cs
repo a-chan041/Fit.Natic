@@ -44,6 +44,7 @@ namespace Fit.Natic
             App.todaysTarget.workoutTarget = Convert.ToInt32(WorkoutTarget.Text);
             App.todaysTarget.sleepTarget = Convert.ToSingle(SleepSlider.Value);
             App.appUser.setDailyTarget(App.todaysTarget);
+
             Navigation.PopAsync();
         }
     }

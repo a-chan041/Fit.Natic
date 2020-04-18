@@ -33,13 +33,7 @@ namespace Fit.Natic
         {
             InitializeComponent();
             loadData();
-            todaysTarget.sleepTarget = 8;
-            todaysTarget.workoutTarget = 60;
-            todaysTarget.calorieTarget = 3000;
-           // todaysTarget.logSleep(6, "slept okay");
-           // todaysTarget.logWorkout("bench",30, "got swolll");
-           // todaysTarget.logMeal("pasta",1000,"saucyyy");
-            appUser.setDailyTarget(todaysTarget);
+         //   appUser.setDailyTarget(todaysTarget);
             MainPage = new NavPage();
             //if its the first time the app is launched
             if(firstTimeLaunched == true)
@@ -66,6 +60,11 @@ namespace Fit.Natic
             //read user info and daily target stored in json file
             appUser = User.readFromJson();
             todaysTarget = appUser.getDailyTarget();
+
+            System.Diagnostics.Debug.WriteLine("----------launched app.xaml.xs appUser-----------");
+            System.Diagnostics.Debug.WriteLine(appUser.ToString());
+            System.Diagnostics.Debug.WriteLine("----------launched app.xaml.xs todaysTarget-----------");
+            System.Diagnostics.Debug.WriteLine(todaysTarget.toString());
 
             //check to see if the date stored is from yesterday or not
             if (appUser.getDailyTarget().date.Date < DateTime.Today.Date)

@@ -12,17 +12,19 @@ namespace Fit.Natic
         Performance.Daily daily_stats;
         Performance.Weekly weekly_stats;
         Performance.Monthly monthly_stats;
+
         public ActivityPage()
         {
+            daily_stats = new Performance.Daily(0, 0, 0);
+            weekly_stats = new Performance.Weekly(0, 0, 0);
+            monthly_stats = new Performance.Monthly(0, 0, 0);
             InitializeComponent();
-            daily_stats = new Performance.Daily(0,0,0);
-            weekly_stats = new Performance.Weekly(0,0,0);
-            monthly_stats = new Performance.Monthly(0,0,0);
+            loadCharts();
         }
 
         public void loadCharts()
         {
-            daily_stats.CalcPerformance(App.todaysTarget.calorieTarget, App.todaysTarget.workoutTarget,App.todaysTarget.sleepTarget, App.todaysTarget.actualCalories, App.todaysTarget.actualWorkout,App.todaysTarget.actualSleep);
+            daily_stats.CalcPerformance();
             weekly_stats.CalculateWeekly();
             monthly_stats.CalculateMonthly();
 
@@ -31,7 +33,6 @@ namespace Fit.Natic
                 new Entry(daily_stats.SleepDeficit)
                 {
                     Label = "Sleep (hrs)",
-
                     ValueLabel = App.todaysTarget.actualSleep.ToString(),
                     Color = SKColor.Parse("#70fbf0")
                 },
@@ -57,7 +58,7 @@ namespace Fit.Natic
                 new Entry(weekly_stats.SleepDeficit)
                 {
 
-                    Color = SKColor.Parse("#70fbf0")
+                  Color = SKColor.Parse("#70fbf0")
                 },
 
 
@@ -92,9 +93,9 @@ namespace Fit.Natic
                 }
             };
 
-            TodayChart.Chart = new RadialGaugeChart { Entries = dailyEntries, LabelTextSize = 40, };
-            WeekChart.Chart = new RadialGaugeChart { Entries = weeklyEntries  };
-            MonthChart.Chart = new RadialGaugeChart { Entries = monthlyEntries};
+            TodayChart.Chart = new RadialGaugeChart { Entries = dailyEntries, LabelTextSize = 40, MaxValue = 100};
+            WeekChart.Chart = new RadialGaugeChart { Entries = weeklyEntries, MaxValue = 100 };
+            MonthChart.Chart = new RadialGaugeChart { Entries = monthlyEntries, MaxValue = 100 };
 
         }
 
@@ -118,7 +119,7 @@ namespace Fit.Natic
 
         void ContentPage_Appearing(System.Object sender, System.EventArgs e)
         {
-            App.appUser.setDailyTarget(App.todaysTarget);
+            //App.appUser.setDailyTarget(App.todaysTarget);
 
             //check if its first time launching the app
             if (App.firstTimeLaunched == true || App.statsPageViewed == false )
