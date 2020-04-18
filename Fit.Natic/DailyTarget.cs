@@ -310,9 +310,9 @@ namespace Fit.Natic
                 System.Diagnostics.Debug.WriteLine("tempSleepLogged " + tempSleepLogged.ToString() + " ---- " + "Target: " + tempSleepTarget.ToString());
                 
 
-                if (tempCalTarget > 0) { this.CalorieDeficit = ((Convert.ToSingle( tempCalLogged) / tempCalTarget) * 100) ; }
-                if (tempWorkTarget > 0) { this.WorkoutDeficit = ((Convert.ToSingle(tempWorkLogged) / tempWorkTarget) * 100)  ; }
-                if (tempSleepTarget > 0) { this.SleepDeficit = ((tempSleepLogged / tempSleepTarget) * 100) ; }
+                if (tempCalTarget > 0) { this.CalorieDeficit = ((Convert.ToSingle( tempCalLogged) / tempCalTarget)/(7) * 100) ; }
+                if (tempWorkTarget > 0) { this.WorkoutDeficit = ((Convert.ToSingle(tempWorkLogged) / tempWorkTarget)/(7) * 100)  ; }
+                if (tempSleepTarget > 0) { this.SleepDeficit = ((tempSleepLogged / tempSleepTarget)/(7) * 100) ; }
 
                 System.Diagnostics.Debug.WriteLine("caloriedef " + this.CalorieDeficit.ToString());
                 System.Diagnostics.Debug.WriteLine("sleepdef " + this.SleepDeficit.ToString());
@@ -334,7 +334,7 @@ namespace Fit.Natic
             {
                 int todaysDate = (int) DateTime.Today.Day;
                 int month = (int) DateTime.Now.Month;
-                int numDays;
+                int numDays = 0;
 
                 //Possibly wont use
                 switch (month)
@@ -422,9 +422,9 @@ namespace Fit.Natic
                 System.Diagnostics.Debug.WriteLine("tempWorkLogged" + tempWorkLogged.ToString() + "----" + "Target: " + tempWorkTarget.ToString());
                 System.Diagnostics.Debug.WriteLine("tempSleepLogged" + tempSleepLogged.ToString() + "----" + "Target: " + tempSleepTarget.ToString());
 
-                if (tempCalTarget > 0) { this.CalorieDeficit = (Convert.ToSingle( tempCalLogged )/ tempCalTarget) * 100; }
-                if (tempWorkTarget > 0) { this.WorkoutDeficit = (Convert.ToSingle( tempWorkLogged) / tempWorkTarget) * 100; }
-                if (tempSleepTarget > 0) { this.SleepDeficit = (tempSleepLogged / tempSleepTarget) * 100; }
+                if (tempCalTarget > 0) { this.CalorieDeficit = (Convert.ToSingle( tempCalLogged )/ tempCalTarget)/numDays * 100; }
+                if (tempWorkTarget > 0) { this.WorkoutDeficit = (Convert.ToSingle( tempWorkLogged) / tempWorkTarget)/numDays * 100; }
+                if (tempSleepTarget > 0) { this.SleepDeficit = (tempSleepLogged / tempSleepTarget)/numDays * 100; }
 
 
                 System.Diagnostics.Debug.WriteLine("caloriedef" + this.CalorieDeficit.ToString());
