@@ -28,7 +28,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -36,22 +36,28 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Label Text="Profile" Padding="7" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="4" TextColor="#707070" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"></Label>
-                <Button Text="Edit Info" Clicked="Button_Clicked" Grid.Row="0" Grid.Column="6" TextColor="White"/>
-                <Image Source="proftemplate.png" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="50"/>
+                <Label Text="Profile" Padding="7" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="4" TextColor="#707070"
+                       FontFamily="Quicksand-Bold.ttf#Quicksand-Bold" FontSize="25" HorizontalOptions="CenterAndExpand"></Label>
+                <Button Text="Edit Info" Clicked="Button_Clicked" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" TextColor="White"/>
+                <Image Source="proftemplate.png" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="4" 
+                       HeightRequest="50" WidthRequest="50"/>
                 <!--<Label Text="Name" Grid.Row="2" Grid.Column="0"  VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>-->
-                <Label x:Name ="Name" Text="{Binding name}" Style="{StaticResource Entry}" Grid.Row="3" Grid.Column="3" />
+               
+                <Label x:Name ="Name" Text="{Binding name}" Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="3" />
                 <!--<Label Text="Gender" Grid.Row="2" Grid.Column="5"  VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>-->
-                <Label x:Name ="Gender" Text="{Binding gender}" Style="{StaticResource Entry}" Grid.Row="3" Grid.Column="3" />
-                <Label x:Name="Height" Text="{Binding height}"  Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="1" />
-                <Label x:Name="Weight" Text="{Binding weight}"  Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="5" />
-                <Label x:Name="FitnessLevel" Text="FitLevel" Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="1" />
-                <Label x:Name="WorkoutGoal"  Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="5" />
-                <Label Text="Calorie Target" Grid.Row="6" Grid.Column="3" VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>
-                <Slider Grid.Row="7" x:Name="calorieSlider" Style="{StaticResource Slider}" Maximum="10000" />
+                <Label x:Name ="Gender" Text="{Binding gender}" Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="3" />
+                
+                <Label x:Name="Height" Text="{Binding height}"  Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="1" />
+                <Label x:Name="Weight" Text="{Binding weight}"  Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="5" />
+                
+                <Label x:Name="FitnessLevel" Text="Goal" Style="{StaticResource Entry}" Grid.Row="6" Grid.Column="1" />
+                    <Label x:Name="WorkoutGoal"  Style="{StaticResource Entry}" Grid.Row="6" Grid.Column="5" />
+
+                    <Label Text="Calorie Target" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="4"  Style="{StaticResource Label}" HorizontalOptions="CenterAndExpand"/>
+                <Slider Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="4" x:Name="calorieSlider" Style="{StaticResource Slider}" Maximum="10000" />
                 <!--Label x:Name="displayLabel" Text = "" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="5"/-->
-                <Label Text="Sleep Target" Grid.Row="8" Grid.Column="3"  VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>
-                <Slider  x:Name="sleepSlider" Grid.Row="9" Style="{StaticResource Slider}" Maximum="12"/>
+                    <Label Text="Sleep Target" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="4"  Style="{StaticResource Label}" HorizontalOptions="CenterAndExpand"/>
+                    <Slider  x:Name="sleepSlider" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource Slider}" Maximum="12"/>
             </Grid>
         </ScrollView>
     </StackLayout>

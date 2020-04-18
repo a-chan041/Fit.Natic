@@ -34,5 +34,10 @@ namespace Fit.Natic
         {
             Launcher.OpenAsync("https://www.active.com/nutrition/articles/your-7-day-meal-plan-882313");
         }
+
+        private void Button_OnClicked_Calorie(object sender, EventArgs e)
+        {
+            Launcher.OpenAsync("https://www.calculator.net/calorie-calculator.html");
+        }
     }
 }

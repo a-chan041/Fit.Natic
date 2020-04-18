@@ -12,7 +12,7 @@
                 <Setter Property="TextColor" Value="#696969"/>
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Grid.RowSpan" Value="1"/>
-                <Setter Property="Grid.ColumnSpan" Value="4"/>
+                <!--Setter Property="Grid.ColumnSpan" Value="4"/-->
             </Style>
 
             <Style x:Key="Slider" TargetType="Slider">
@@ -21,25 +21,25 @@
                 <Setter Property="MaximumTrackColor" Value="LightGray"/>
                 <Setter Property="MinimumTrackColor" Value="LightGray"/>
                 <Setter Property="BackgroundColor" Value="White"/>
-                <Setter Property="Grid.ColumnSpan" Value="5"/>
-                <Setter Property="Grid.Column" Value="2"/>
+                <!--Setter Property="Grid.ColumnSpan" Value="5"/-->
+                <!--Setter Property="Grid.Column" Value="2"/-->
             </Style>
 
             <Style x:Key="Label" TargetType="Label">
                 <Setter Property="TextColor" Value="#707070"/>
-                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontSize" Value="20"/>
                 <Setter Property="FontFamily" Value="Quicksand-Medium.ttf#Quicksand-Medium"/>
-                <Setter Property="Grid.ColumnSpan" Value="5"/>
+                <!--Setter Property="Grid.ColumnSpan" Value="5"/-->
             </Style>
 
             <Style x:Key="TitleLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="#707070"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontSize" Value="25"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="Margin" Value= "2"/>
                 <Setter Property="FontFamily" Value="Quicksand-Bold.ttf#Quicksand-Bold"/>
-                <Setter Property="Grid.ColumnSpan" Value="5"/>
+                <!--Setter Property="Grid.ColumnSpan" Value="5"/-->
             </Style>
 
             <Style x:Key="WhiteButton" TargetType="Button">

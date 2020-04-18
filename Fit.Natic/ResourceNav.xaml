@@ -27,7 +27,8 @@
          <Button ImageSource="foodicon.png" Text="Food Resources" Padding="30" Clicked="Button_OnClicked_Meals"
                    FontSize="12" BackgroundColor="#FFFFF" HorizontalOptions="Center" 
                    VerticalOptions="End" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="1" />
-
+         <Button ImageSource="resource.png" Text="Calorie Counter" Padding="30" Clicked="Button_OnClicked_Calorie" 
+                 FontSize="12" BackgroundColor="#FFFFF" HorizontalOptions="Center" VerticalOptions="End"/>
          
        </StackLayout>
    </ScrollView>
