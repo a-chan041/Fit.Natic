@@ -45,13 +45,13 @@
                 <Label x:Name ="Gender" Text="{Binding gender}" Style="{StaticResource Entry}" Grid.Row="3" Grid.Column="3" />
                 <Label x:Name="Height" Text="{Binding height}"  Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="1" />
                 <Label x:Name="Weight" Text="{Binding weight}"  Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="5" />
-                <Label x:Name="Level" Text="FitLevel" Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="1" />
-                <Label x:Name="Goal" Text="FitGoal"   Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="5" />
+                <Label x:Name="FitnessLevel" Text="FitLevel" Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="1" />
+                <Label x:Name="WorkoutGoal"  Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="5" />
                 <Label Text="Calorie Target" Grid.Row="6" Grid.Column="3" VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>
-                <Slider ValueChanged="OnSliderValueChanged" Grid.Row="7"  Style="{StaticResource Slider}"/>
+                <Slider Grid.Row="7" x:Name="calorieSlider" Style="{StaticResource Slider}" Maximum="10000" />
                 <!--Label x:Name="displayLabel" Text = "" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="5"/-->
                 <Label Text="Sleep Target" Grid.Row="8" Grid.Column="3"  VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>
-                <Slider ValueChanged="OnSliderValueChanged" Grid.Row="9" Style="{StaticResource Slider}"/>
+                <Slider  x:Name="sleepSlider" Grid.Row="9" Style="{StaticResource Slider}" Maximum="12"/>
             </Grid>
         </ScrollView>
     </StackLayout>

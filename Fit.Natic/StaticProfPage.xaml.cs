@@ -10,16 +10,20 @@ namespace Fit.Natic
 {
     public partial class StaticProfPage : ContentPage
     {
+       
         public StaticProfPage()
         {
             this.BackgroundColor = Color.LightGray;
             InitializeComponent();
             BindingContext = App.appUser;
+            WorkoutGoal.Text = App.todaysTarget.workoutTarget.ToString();
+            calorieSlider.Value = App.todaysTarget.calorieTarget;
+            sleepSlider.Value = App.todaysTarget.sleepTarget;
         }
 
         void ContentPage_Appearing(System.Object sender, System.EventArgs e)
         {
-            this.BindingContext = App.appUser;
+            resetBinding();
         }
 
         void ContentPage_Disappearing(System.Object sender, System.EventArgs e)
@@ -32,10 +36,16 @@ namespace Fit.Natic
             Navigation.PushAsync(new ProfPage());
         }
 
-        void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
+        void resetBinding()
         {
-            double value = args.NewValue;//Hello
-                                         //displayLabel.Text = String.Format("", value);
+            DailyTarget target = App.appUser.getDailyTarget();
+            this.BindingContext = null;
+            this.BindingContext = App.appUser;
+            WorkoutGoal.Text = target.workoutTarget.ToString();
+            calorieSlider.Value = target.calorieTarget;
+            sleepSlider.Value = target.sleepTarget;
+
         }
+
     }
 }

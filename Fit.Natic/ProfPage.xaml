@@ -52,7 +52,7 @@
                     <!--Label x:Name="displayLabel" Text = "" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="5"/-->
                     <Label Text="Sleep Target" Grid.Row="8" Grid.Column="3"  VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>
                     <Slider x:Name="SleepSlider" ValueChanged="OnSleepValueChanged" Grid.Row="9" Style="{StaticResource Slider}" Maximum="12" />
-                     <Label x:Name="SleepValue" Text="0" Grid.Row="8" Grid.Column="4"/>
+                    <Label x:Name="SleepValue" Text="0" Grid.Row="8" Grid.Column="4"/>
                     <Button Text="Save Info" Clicked="Button_Clicked" BackgroundColor="Blue" TextColor="White" FontSize="18"  Grid.Row="10" Padding="5"/>
                    
 
