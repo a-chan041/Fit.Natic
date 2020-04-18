@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Fit.Natic.Page1">
+    <ContentPage.Content>
+        <StackLayout>
+           
+            <Label Text="Create Profile" Padding="7"  TextColor="#707070" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"></Label>
+
+            <Entry x:Name ="NameEntry" Placeholder="Name" Style="{StaticResource Entry}"  ClearButtonVisibility="WhileEditing"/>
+            
+            <Entry x:Name ="GenderEntry" Placeholder="Gender" Style="{StaticResource Entry}"  ClearButtonVisibility="WhileEditing"/>
+            
+            <Entry x:Name="HeightEntry" Keyboard="Numeric" Placeholder="Height" Style="{StaticResource Entry}"  ClearButtonVisibility="WhileEditing"/>
+            
+            <Entry x:Name="WeightEntry" Keyboard = "Numeric" Placeholder="Weight" Style="{StaticResource Entry}"  ClearButtonVisibility="WhileEditing"/>
+            
+            
+            <Entry x:Name="WorkoutTarget" Keyboard="Numeric" Placeholder="Workout Goal(min)" Style="{StaticResource Entry}"  ClearButtonVisibility="WhileEditing"/>
+
+            <Label Text="Calorie Target"  VerticalOptions="EndAndExpand"  Padding="7" Style="{StaticResource Label}"/>
+            
+            <Slider x:Name="CalorieSlider" ValueChanged="OnSliderValueChanged" Grid.Row="7"  Style="{StaticResource Slider}" Minimum="0" Maximum="10000"/>
+
+            <Label x:Name="CalorieLabel" Text="0"  Padding="7"/>
+            
+            <Label Text="Sleep Target"   VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>
+            
+            <Slider x:Name="SleepSlider" ValueChanged="OnSleepValueChanged"  Style="{StaticResource Slider}" Maximum="12" />
+
+            <Label x:Name="SleepValue" Text="0" Padding="7" />
+            
+            <Button Text="Save Info" Clicked="Button_Clicked" BackgroundColor="Blue" TextColor="White" FontSize="18"  Padding="7"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

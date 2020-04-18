@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Microcharts;
 using SkiaSharp;
 using Xamarin.Forms;
@@ -15,6 +16,11 @@ namespace Fit.Natic
 
         public ActivityPage()
         {
+            if (App.firstTimeLaunched == true)
+            {
+                Navigation.PushAsync(new Page1());
+            }
+
             daily_stats = new Performance.Daily(0, 0, 0);
             weekly_stats = new Performance.Weekly(0, 0, 0);
             monthly_stats = new Performance.Monthly(0, 0, 0);
