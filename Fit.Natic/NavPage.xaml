@@ -11,7 +11,7 @@
     </NavigationPage>
     <NavigationPage IconImageSource="proficon.png">
         <x:Arguments>
-             <local:ProfPage/>
+             <local:StaticProfPage/>
         </x:Arguments>
     </NavigationPage>
     <NavigationPage  IconImageSource="book.png">
@@ -19,5 +19,4 @@
             <local:ResourceNav/>
         </x:Arguments>
     </NavigationPage>
-   
 </TabbedPage>

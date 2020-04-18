@@ -18,7 +18,6 @@ namespace Fit.Natic
             daily_stats = new Performance.Daily(0,0,0);
             weekly_stats = new Performance.Weekly(0,0,0);
             monthly_stats = new Performance.Monthly(0,0,0);
-            loadCharts();
         }
 
         public void loadCharts()
@@ -119,10 +118,12 @@ namespace Fit.Natic
 
         void ContentPage_Appearing(System.Object sender, System.EventArgs e)
         {
+            App.appUser.setDailyTarget(App.todaysTarget);
+
             //check if its first time launching the app
-            if(App.firstTimeLaunched == true || App.statsPageViewed == false )
+            if (App.firstTimeLaunched == true || App.statsPageViewed == false )
             {
-                DisplayAlert("Resources", "This page has buttons where you can log your meals, calories, and sleep. Below there are charts where you can track your progress!", "OK");
+        //        DisplayAlert("Activity", "This page has buttons where you can log your meals, calories, and sleep. Below there are charts where you can track your progress!", "OK");
                 App.statsPageViewed = true;
             }
             //want to reload charts in case anything has changed since leaving / coming back to the page

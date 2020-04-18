@@ -19,7 +19,6 @@ namespace Fit.Natic
             string notes = Meal_Notes.Text;
             App.todaysTarget.logMeal(name, cals, notes);
             Navigation.PopAsync();
-
         }
     }
 }

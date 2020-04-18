@@ -36,9 +36,9 @@ namespace Fit.Natic
             todaysTarget.sleepTarget = 8;
             todaysTarget.workoutTarget = 60;
             todaysTarget.calorieTarget = 3000;
-            todaysTarget.logSleep(6, "slept okay");
-            todaysTarget.logWorkout("bench",30, "got swolll");
-            todaysTarget.logMeal("pasta",1000,"saucyyy");
+           // todaysTarget.logSleep(6, "slept okay");
+           // todaysTarget.logWorkout("bench",30, "got swolll");
+           // todaysTarget.logMeal("pasta",1000,"saucyyy");
             appUser.setDailyTarget(todaysTarget);
             MainPage = new NavPage();
             //if its the first time the app is launched

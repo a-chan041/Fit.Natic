@@ -1,14 +1,15 @@
-﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Fit.Natic.ProfPage"
+             x:Class="Fit.Natic.StaticProfPage"
              BackgroundColor="#FFFFF"
-             Appearing="PageAppearing"
+             Appearing="ContentPage_Appearing"
              Disappearing="ContentPage_Disappearing">
-
-    <StackLayout>
+    <ContentPage.Content>
+         <StackLayout>
         <ScrollView>
             <Grid Padding="0">
                 <Grid.RowDefinitions>
@@ -36,16 +37,16 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Label Text="Profile" Padding="7" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="4" TextColor="#707070" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"></Label>
-                <Button Text="Edit Info" Clicked="EditProfileInfo" Grid.Row="0" Grid.Column="6" BackgroundColor="Blue" TextColor="White"/>
+                <Button Text="Edit Info" Clicked="Button_Clicked" Grid.Row="0" Grid.Column="6" TextColor="White"/>
                 <Image Source="proftemplate.png" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="50"/>
                 <!--<Label Text="Name" Grid.Row="2" Grid.Column="0"  VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>-->
-                <Label x:Name ="Name" Text="{Binding name}" Style="{StaticResource Entry}" Grid.Row="3" Grid.Column="0" />
+                <Label x:Name ="Name" Text="{Binding name}" Style="{StaticResource Entry}" Grid.Row="3" Grid.Column="3" />
                 <!--<Label Text="Gender" Grid.Row="2" Grid.Column="5"  VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>-->
-                <Label x:Name ="Gender" Text="{Binding gender}" Style="{StaticResource Entry}" Grid.Row="3" Grid.Column="5" />
-                <Label x:Name="Height" Text="{Binding height}" Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="0" />
-                <Label x:Name="Weight" Text="{Binding weight}" Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="5" />
-                <Label x:Name="Level" Text="{Binding FitLevel}" Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="0" />
-                <Label x:Name="Goal" Text="{Binding FitGoal}" Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="5" />
+                <Label x:Name ="Gender" Text="{Binding gender}" Style="{StaticResource Entry}" Grid.Row="3" Grid.Column="3" />
+                <Label x:Name="Height" Text="{Binding height}"  Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="1" />
+                <Label x:Name="Weight" Text="{Binding weight}"  Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="5" />
+                <Label x:Name="Level" Text="FitLevel" Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="1" />
+                <Label x:Name="Goal" Text="FitGoal"   Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="5" />
                 <Label Text="Calorie Target" Grid.Row="6" Grid.Column="3" VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>
                 <Slider ValueChanged="OnSliderValueChanged" Grid.Row="7"  Style="{StaticResource Slider}"/>
                 <!--Label x:Name="displayLabel" Text = "" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="5"/-->
@@ -54,4 +55,5 @@
             </Grid>
         </ScrollView>
     </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

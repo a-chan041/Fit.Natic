@@ -29,7 +29,6 @@ namespace Fit.Natic
 
         void ContentPage_Disappearing(System.Object sender, System.EventArgs e)
         {
-
         }
     }
 }

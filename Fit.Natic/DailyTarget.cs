@@ -29,7 +29,7 @@ namespace Fit.Natic
         {
             this.calorieTarget = 20000;
             this.sleepTarget = 8;
-            this.workoutTarget = 30;
+            this.workoutTarget = 60;
 
             this.meals = new List<Meal>();
             this.workout = new Workout();
@@ -118,14 +118,15 @@ namespace Fit.Natic
         public bool logWorkout(string type, int duration, string notes) {
             try
             {
-                this.actualWorkout = duration;
+                this.actualWorkout += duration;
                 this.workout.workoutType = type;
-                this.workout.duration +=duration;
+                this.workout.duration = this.actualWorkout;
                 this.workout.notes = notes;
                 return true;
             }
             catch (Exception s)
             {
+                System.Diagnostics.Debug.WriteLine("--------ERROR COULDNT LOG WORKOUT-------------");
                 return false;
             }
         }
@@ -214,9 +215,9 @@ namespace Fit.Natic
         public virtual void CalcPerformance(int calorieTarget, int workoutTarget, float sleepTarget, int actualCalories,
             int actualWorkout, float actualSleep)
         {
-            this.CalorieDeficit = 100;
-            this.WorkoutDeficit = 100;
-            this.SleepDeficit = 100;
+            this.CalorieDeficit = 0;
+            this.WorkoutDeficit = 0;
+            this.SleepDeficit = 0;
 
             if (calorieTarget != 0) { this.CalorieDeficit = (actualCalories/ calorieTarget)*100; }
             if (workoutTarget != 0) { this.WorkoutDeficit = (actualWorkout / workoutTarget) * 100; }
@@ -231,9 +232,9 @@ namespace Fit.Natic
             public override void CalcPerformance(int calorieTarget, int workoutTarget, float sleepTarget, int actualCalories,
                 int actualWorkout, float actualSleep)
             {
-                this.CalorieDeficit = 100;
-                this.WorkoutDeficit = 100;
-                this.SleepDeficit = 100;
+                this.CalorieDeficit = 0;
+                this.WorkoutDeficit = 0;
+                this.SleepDeficit = 0;
 
                 if (calorieTarget != 0) { this.CalorieDeficit = (actualCalories / calorieTarget) * 100; }
                 if (workoutTarget != 0) { this.WorkoutDeficit = (actualWorkout / workoutTarget) * 100; }
@@ -273,9 +274,9 @@ namespace Fit.Natic
                 int tempCalLogged = 0, tempCalTarget = 0, tempWorkLogged = 0, tempWorkTarget = 0;
                 float tempSleepLogged = 0, tempSleepTarget = 0;
 
-                this.CalorieDeficit = 100;
-                this.WorkoutDeficit = 100;
-                this.SleepDeficit = 100;
+                this.CalorieDeficit = 0;
+                this.WorkoutDeficit = 0;
+                this.SleepDeficit = 0;
 
                 foreach (DailyResults day in results)
                 {
@@ -302,10 +303,19 @@ namespace Fit.Natic
                 tempSleepLogged += App.todaysTarget.actualSleep;
                 tempSleepTarget += App.todaysTarget.sleepTarget;
 
+                System.Diagnostics.Debug.WriteLine("------CALC WEEKLY RESULTS----------------");
+                System.Diagnostics.Debug.WriteLine("tempCalLogged"+tempCalLogged.ToString() + "----" + "Target: " + tempCalTarget.ToString());
+                System.Diagnostics.Debug.WriteLine("tempWorkLogged" + tempWorkLogged.ToString() + "----" + "Target: " + tempWorkTarget.ToString());
+                System.Diagnostics.Debug.WriteLine("tempSleepLogged" + tempSleepLogged.ToString() + "----" + "Target: " + tempSleepTarget.ToString());
+                
+
                 if (tempCalTarget != 0) { this.CalorieDeficit = ((tempCalLogged / tempCalTarget) * 100) ; }
                 if (tempWorkTarget != 0) { this.WorkoutDeficit = ((tempWorkLogged / tempWorkTarget) * 100)  ; }
                 if (tempSleepTarget != 0) { this.SleepDeficit = ((tempSleepLogged / tempSleepTarget) * 100) ; }
 
+                System.Diagnostics.Debug.WriteLine("caloriedef" + this.CalorieDeficit.ToString());
+                System.Diagnostics.Debug.WriteLine("sleepdef" + this.SleepDeficit.ToString());
+                System.Diagnostics.Debug.WriteLine("workdef" + this.WorkoutDeficit.ToString());
             }
 
         }
@@ -406,9 +416,19 @@ namespace Fit.Natic
                 tempSleepLogged += App.todaysTarget.actualSleep;
                 tempSleepTarget += App.todaysTarget.sleepTarget;
 
+                System.Diagnostics.Debug.WriteLine("------CALC MONTHLY RESULTS----------------");
+                System.Diagnostics.Debug.WriteLine("tempCalLogged" + tempCalLogged.ToString() + "----" + "Target: " + tempCalTarget.ToString());
+                System.Diagnostics.Debug.WriteLine("tempWorkLogged" + tempWorkLogged.ToString() + "----" + "Target: " + tempWorkTarget.ToString());
+                System.Diagnostics.Debug.WriteLine("tempSleepLogged" + tempSleepLogged.ToString() + "----" + "Target: " + tempSleepTarget.ToString());
+
                 if (tempCalTarget != 0) { this.CalorieDeficit = (tempCalLogged / tempCalTarget) * 100; }
                 if (tempWorkTarget != 0) { this.WorkoutDeficit = (tempWorkLogged / tempWorkTarget) * 100; }
                 if (tempSleepTarget != 0) { this.SleepDeficit = (tempSleepLogged / tempSleepTarget) * 100; }
+
+
+                System.Diagnostics.Debug.WriteLine("caloriedef" + this.CalorieDeficit.ToString());
+                System.Diagnostics.Debug.WriteLine("sleepdef" + this.SleepDeficit.ToString());
+                System.Diagnostics.Debug.WriteLine("workdef" + this.WorkoutDeficit.ToString());
 
             }
         }

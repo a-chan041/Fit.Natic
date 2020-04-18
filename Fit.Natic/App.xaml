@@ -16,7 +16,6 @@
             </Style>
 
             <Style x:Key="Slider" TargetType="Slider">
-                <Setter Property="Maximum" Value="2000"/>
                 <Setter Property="Minimum" Value="0"/>
                 <Setter Property="ThumbColor" Value="Gray"/>
                 <Setter Property="MaximumTrackColor" Value="LightGray"/>
