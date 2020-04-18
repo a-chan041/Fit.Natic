@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using Microcharts;
 using SkiaSharp;
@@ -28,11 +29,11 @@ namespace Fit.Natic
             loadCharts();
         }
 
-        public void loadCharts()
+        public async Task loadCharts()
         {
             daily_stats.CalcPerformance();
-            weekly_stats.CalculateWeekly();
-            monthly_stats.CalculateMonthly();
+            await weekly_stats.CalculateWeekly();
+            await monthly_stats.CalculateMonthly();
 
             var dailyEntries = new[]
             {
@@ -40,7 +41,7 @@ namespace Fit.Natic
                 {
                     Label = "Sleep (hrs)",
                     ValueLabel = App.todaysTarget.actualSleep.ToString(),
-                    Color = SKColor.Parse("#70fbf0")
+                    Color = SKColor.Parse("#2eb9db")
                 },
 
 
@@ -48,14 +49,14 @@ namespace Fit.Natic
                 {
                     Label = "Calories",
                     ValueLabel = App.todaysTarget.actualCalories.ToString(),
-                    Color = SKColor.Parse("#cc3366")
+                    Color = SKColor.Parse("#e63076")
                 },
 
                 new Entry(daily_stats.WorkoutDeficit)
                 {
                     Label = "Workout (min)",
                     ValueLabel =  App.todaysTarget.actualWorkout.ToString(),
-                    Color = SKColor.Parse("#c3e949")
+                    Color = SKColor.Parse("#a5ed18")
                 }
             };
 
@@ -134,7 +135,7 @@ namespace Fit.Natic
                 App.statsPageViewed = true;
             }
             //want to reload charts in case anything has changed since leaving / coming back to the page
-            loadCharts();
+            Task.Run(async () => { await loadCharts(); });
         }
 
         void ContentPage_Disappearing(System.Object sender, System.EventArgs e)

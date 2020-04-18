@@ -260,7 +260,7 @@ namespace Fit.Natic
              * between each days targets and actual results, adding them up
              *
              */
-            public async void CalculateWeekly()
+            public async Task CalculateWeekly()
             {
                 //get which day of the week it is
                 DayOfWeek todaysDate = DateTime.Today.DayOfWeek;
@@ -330,7 +330,7 @@ namespace Fit.Natic
             //ADD FUNCTION TO FIND CURRENT MONTH FROM DATE
             //TOTAL ALL DAILY TARGETS IN MONTH
 
-            public async void CalculateMonthly()
+            public async Task CalculateMonthly()
             {
                 int todaysDate = (int) DateTime.Today.Day;
                 int month = (int) DateTime.Now.Month;
@@ -382,7 +382,7 @@ namespace Fit.Natic
                 DateTime otherDate = DateTime.Today.AddDays(-(int)todaysDate).Date;
 
                 //Retrieve daily results from database
-                List<DailyResults> results = await  App.Database.GetDateRange(otherDate, DateTime.Today.Date);
+                List<DailyResults> results = await App.Database.GetDateRange(otherDate, DateTime.Today.Date);
 
                 //Total daily performance up to current day in month
                 int tempCalLogged =0, tempCalTarget=0, tempWorkLogged=0, tempWorkTarget=0;
