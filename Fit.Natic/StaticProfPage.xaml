@@ -49,12 +49,12 @@
                 <Label x:Name ="Gender" Text="{Binding gender}" Style="{StaticResource Entry}" Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2" />
                 
                 <Label Text="Height(cm):" Style="{StaticResource Label}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3"/>
-                <Label x:Name="Height" Text="{Binding height}"  Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="4" />
+                <Label x:Name="Height" Text="{Binding height}"  Style="{StaticResource Entry}" Grid.Row="5" Grid.Column="5" />
                 <Label Text="Weight(lb):" Style="{StaticResource Label}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"/>
-                <Label x:Name="Weight" Text="{Binding weight}"  Style="{StaticResource Entry}" Grid.Row="6" Grid.Column="4" />
+                <Label x:Name="Weight" Text="{Binding weight}"  Style="{StaticResource Entry}" Grid.Row="6" Grid.Column="5" />
                 
                 <Label x:Name="WorkoutGoalLabel" Text="Exercise Goal(min):" Style="{StaticResource Entry}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" />
-                <Label x:Name="WorkoutGoal" Text="{Binding FitGoal}" Style="{StaticResource Entry}" Grid.Row="7" Grid.Column="4"/>
+                <Label x:Name="WorkoutGoal" Text="{Binding FitGoal}" Style="{StaticResource Entry}" Grid.Row="7" Grid.Column="5"/>
                     <Label Text="Calorie Target" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="4"  Style="{StaticResource Label}" HorizontalOptions="CenterAndExpand"/>
                 <Slider Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="4" x:Name="calorieSlider"
                         Style="{StaticResource Slider}" />
