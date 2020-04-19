@@ -54,16 +54,19 @@
                     
                     <Label Text="Calorie Target" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="EndAndExpand" 
                            Style="{StaticResource Label}" HorizontalOptions="Center"/>
-                     <Slider x:Name="CalorieSlider" ValueChanged="OnSliderValueChanged" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource Slider}" 
+                     <Slider x:Name="CalorieSlider" ValueChanged="OnSliderValueChanged" Grid.Row="6" Grid.Column="0" 
+                             Grid.ColumnSpan="2" Style="{StaticResource Slider}" 
                             Minimum="0" Maximum="10000" VerticalOptions="Center"/>
                      <Label x:Name="CalorieValueLabel" Text="0" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
                             VerticalOptions="Start" HorizontalOptions="Center" Style="{StaticResource Label}" />
                     <!--Label x:Name="displayLabel" Text = "" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="5"/-->
                      <Label Text="Sleep Target" Grid.Row="8" Grid.Column="0"  Grid.ColumnSpan="2" VerticalOptions="EndAndExpand" 
                            Style="{StaticResource Label}" HorizontalOptions="Center"/>
-                    <Slider x:Name="SleepSlider" ValueChanged="OnSleepValueChanged" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource Slider}"
+                    <Slider x:Name="SleepSlider" ValueChanged="OnSleepValueChanged" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"  
+                            Style="{StaticResource Slider}"
                             Maximum="12" VerticalOptions="Center" />
-                    <Label x:Name="SleepValueLabel" Text="0" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="Center" Style="{StaticResource Label}"/>
+                    <Label x:Name="SleepValueLabel" Text="0" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Start" 
+                           HorizontalOptions="Center" Style="{StaticResource Label}"/>
                     <Button Text="Save Info" Clicked="Button_Clicked" 
                             Grid.Row="11"  Grid.Column="0" Grid.ColumnSpan="2"  Padding="5" VerticalOptions="Center" Style="{StaticResource OrangeButton}" />
                    

@@ -40,18 +40,27 @@ namespace Fit.Natic
 
         }
 
-        void Button_Clicked(System.Object sender, System.EventArgs e)
+        async void Button_Clicked(System.Object sender, System.EventArgs e)
         {
-            App.appUser.name = NameEntry.Text;
-            App.appUser.gender = GenderEntry.Text;
-            App.appUser.height = Convert.ToInt32(HeightEntry.Text);
-            App.appUser.weight = Convert.ToInt32(WeightEntry.Text);
-            App.todaysTarget.calorieTarget = Convert.ToInt32(CalorieSlider.Value);
-            App.todaysTarget.workoutTarget = Convert.ToInt32(WorkoutTarget.Text);
-            App.todaysTarget.sleepTarget = Convert.ToSingle(SleepSlider.Value);
-            App.appUser.setDailyTarget(App.todaysTarget);
+            if (NameEntry.Text != null && GenderEntry.Text != null && HeightEntry.Text != null &&
+                WeightEntry.Text != null && WorkoutTarget.Text != null)
+            {
+                App.appUser.name = NameEntry.Text;
+                App.appUser.gender = GenderEntry.Text;
+                App.appUser.height = Convert.ToInt32(HeightEntry.Text);
+                App.appUser.weight = Convert.ToInt32(WeightEntry.Text);
+                App.todaysTarget.calorieTarget = Convert.ToInt32(CalorieSlider.Value);
+                App.todaysTarget.workoutTarget = Convert.ToInt32(WorkoutTarget.Text);
+                App.todaysTarget.sleepTarget = Convert.ToSingle(SleepSlider.Value);
+                App.appUser.setDailyTarget(App.todaysTarget);
 
-            Navigation.PopAsync();
+                Navigation.PopAsync();
+            }
+            else
+            {
+                await DisplayAlert("Alert", "You must enter values", "OK");
+            }
         }
+
     }
 }

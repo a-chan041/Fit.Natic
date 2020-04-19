@@ -53,10 +53,11 @@
                 <Label Text="Weight(lb):" Style="{StaticResource Label}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"/>
                 <Label x:Name="Weight" Text="{Binding weight}"  Style="{StaticResource Entry}" Grid.Row="6" Grid.Column="4" />
                 
-                <Label x:Name="WorkoutGoalLabel" Text="Exercise Goal:" Style="{StaticResource Entry}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" />
+                <Label x:Name="WorkoutGoalLabel" Text="Exercise Goal(min):" Style="{StaticResource Entry}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" />
                 <Label x:Name="WorkoutGoal" Text="{Binding FitGoal}" Style="{StaticResource Entry}" Grid.Row="7" Grid.Column="4"/>
                     <Label Text="Calorie Target" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="4"  Style="{StaticResource Label}" HorizontalOptions="CenterAndExpand"/>
-                <Slider Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="4" x:Name="calorieSlider" Style="{StaticResource Slider}" Maximum="10000" />
+                <Slider Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="4" x:Name="calorieSlider"
+                        Style="{StaticResource Slider}" />
                 <!--Label x:Name="displayLabel" Text = "" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="5"/-->
                     <Label Text="Sleep Target" Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="4"  Style="{StaticResource Label}" HorizontalOptions="CenterAndExpand"/>
                     <Slider  x:Name="sleepSlider" Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="4" Style="{StaticResource Slider}" Maximum="12"/>
