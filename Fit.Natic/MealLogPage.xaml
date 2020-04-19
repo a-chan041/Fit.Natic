@@ -12,10 +12,6 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -41,9 +37,9 @@
                         </x:Array>
                     </Picker.ItemsSource>
                  </Picker>
-                 <Entry Placeholder="Notes" x:Name="Meal_Notes" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7" Grid.RowSpan="5" Style="{StaticResource Entry}"/>
+                 <Entry Placeholder="Notes" x:Name="Meal_Notes" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7" Grid.RowSpan="2" Style="{StaticResource Entry}"/>
             </Grid>
-            <Button Text="Save" Pressed="Save_Button_Pressed" Grid.Row="5" Grid.Column="3" Style="{StaticResource OrangeButton}" VerticalOptions="End"  />
+            <Button Text="Save" Pressed="Save_Button_Pressed" Style="{StaticResource OrangeButton}" VerticalOptions="End"  />
         </StackLayout>
       </ScrollView>
     </ContentPage.Content>

@@ -28,10 +28,10 @@
                     <forms:ChartView x:Name = "MonthChart" HeightRequest="150" WidthRequest="150" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
 
              </Grid>
-                 <Button Text= "Log Meal" Style="{StaticResource OrangeButton}" HeightRequest="50"
-                        Pressed="LogMeal" />
+                  <Button Text="Log Workout" Style="{StaticResource OrangeButton}" HeightRequest="50" Pressed="LogWorkout"/>
+                 <Button Text= "Log Meal" Style="{StaticResource OrangeButton}" HeightRequest="50" Pressed="LogMeal" />
                 <Button Text="Log Sleep" Style="{StaticResource OrangeButton}"  HeightRequest="50" Pressed="LogSleep"/>
-                <Button Text="Log Workout" Style="{StaticResource OrangeButton}" HeightRequest="50" Pressed="LogWorkout"/>
+               
              </StackLayout>
          </ScrollView>
      </StackLayout>

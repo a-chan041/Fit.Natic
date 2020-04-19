@@ -43,23 +43,23 @@ namespace Fit.Natic
                 {
                     Label = "Sleep (hrs)",
                     ValueLabel = App.todaysTarget.actualSleep.ToString(),
-                    Color = SKColor.Parse("#F57A39")
-                    
-                },
+                    Color = SKColor.Parse("#FFAB2D")
 
+                },
+                
 
                 new Entry(daily_stats.CalorieDeficit)
                 {
                     Label = "Calories",
                     ValueLabel = App.todaysTarget.actualCalories.ToString(),
-                    Color = SKColor.Parse("#E16D01")
+                    Color = SKColor.Parse("#93DBFF")
                 },
 
                 new Entry(daily_stats.WorkoutDeficit)
                 {
                     Label = "Workout (min)",
                     ValueLabel =  App.todaysTarget.actualWorkout.ToString(),
-                    Color = SKColor.Parse("#CC6D3A")
+                    Color = SKColor.Parse("#D97D54")
                 }
             };
 
@@ -68,18 +68,18 @@ namespace Fit.Natic
                 new Entry(weekly_stats.SleepDeficit)
                 {
 
-                  Color = SKColor.Parse("#F57A39")
+                  Color = SKColor.Parse("#FFAB2D")
                 },
 
 
                 new Entry(weekly_stats.CalorieDeficit)
                 {
-                    Color = SKColor.Parse("#E16D01")
+                    Color = SKColor.Parse("#93DBFF")
                 },
 
                 new Entry(weekly_stats.WorkoutDeficit)
                 {
-                    Color = SKColor.Parse("#CC6D3A")
+                    Color = SKColor.Parse("#D97D54")
                 }
             };
 
@@ -88,18 +88,18 @@ namespace Fit.Natic
                 new Entry(monthly_stats.SleepDeficit)
                 {
 
-                    Color = SKColor.Parse("#F57A39")
+                    Color = SKColor.Parse("#FFAB2D")
                 },
 
 
                 new Entry(monthly_stats.CalorieDeficit)
                 {
-                    Color = SKColor.Parse("#E16D01")
+                    Color = SKColor.Parse("#93DBFF")
                 },
 
                 new Entry(monthly_stats.WorkoutDeficit)
                 {
-                    Color = SKColor.Parse("#CC6D3A")
+                    Color = SKColor.Parse("#D97D54")
                 }
             };
 

@@ -28,6 +28,6 @@
             <Entry x:Name = "sleepnotes" Placeholder="Notes"  BackgroundColor="#FFFFF" Style="{StaticResource Entry}" ClearButtonVisibility="WhileEditing" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="4"  FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
         </Grid>
         
-        <Button Text="Save" Margin = "40,200,40,0" Pressed="Save_Button_Pressed" Style="{StaticResource OrangeButton}"/>
+        <Button Text="Save" Margin = "40,160,40,0" Pressed="Save_Button_Pressed" Style="{StaticResource OrangeButton}"/>
     </StackLayout>
 </ContentPage>
