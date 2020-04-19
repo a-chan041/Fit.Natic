@@ -41,8 +41,8 @@
                         </x:Array>
                     </Picker.ItemsSource>
                  </Picker>
+                 <Entry Placeholder="Notes" x:Name="Meal_Notes" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7" Grid.RowSpan="5" Style="{StaticResource Entry}"/>
             </Grid>
-            <Entry Placeholder="Notes" x:Name="Meal_Notes" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7" Grid.RowSpan="5" Style="{StaticResource Entry}"/>
             <Button Text="Save" Pressed="Save_Button_Pressed" Grid.Row="5" Grid.Column="3" Style="{StaticResource OrangeButton}" VerticalOptions="End"  />
         </StackLayout>
       </ScrollView>
