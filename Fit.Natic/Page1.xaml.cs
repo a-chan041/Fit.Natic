@@ -17,18 +17,18 @@ namespace Fit.Natic
           
             InitializeComponent();
             BindingContext = App.appUser;
-            this.BackgroundColor = Color.LightGray;
+            this.BackgroundColor = Color.White;
         }
         void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
         {
             double value = args.NewValue;
-            CalorieLabel.Text = String.Format("{0}", value);
+            CalorieValueLabel.Text = String.Format("{0}", value);
         }
 
         void OnSleepValueChanged(object sender, ValueChangedEventArgs args)
         {
             double value = args.NewValue;
-            SleepValue.Text = String.Format("{0}", value);
+            SleepValueLabel.Text = String.Format("{0}", value);
         }
 
         void PageAppearing(System.Object sender, System.EventArgs e)

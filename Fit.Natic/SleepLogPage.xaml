@@ -24,8 +24,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Entry x:Name = "sleepLength" Keyboard = "Numeric" Placeholder="Duration (in hours)" FontSize="12" BackgroundColor="#FFFFF" Style="{StaticResource Entry}" ClearButtonVisibility="WhileEditing" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="2" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
-            <Entry x:Name = "sleepnotes" Placeholder="Notes" FontSize="12" BackgroundColor="#FFFFF" Style="{StaticResource Entry}" ClearButtonVisibility="WhileEditing" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="4"  FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
+            <Entry x:Name = "sleepLength" Keyboard = "Numeric" Placeholder="Duration (in hours)"  BackgroundColor="#FFFFF" Style="{StaticResource Entry}" ClearButtonVisibility="WhileEditing" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="2" FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
+            <Entry x:Name = "sleepnotes" Placeholder="Notes"  BackgroundColor="#FFFFF" Style="{StaticResource Entry}" ClearButtonVisibility="WhileEditing" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="4"  FontFamily="Quicksand-Medium.ttf#Quicksand-Medium"/>
         </Grid>
         
         <Button Text="Save" Margin = "40,200,40,0" Pressed="Save_Button_Pressed" Style="{StaticResource OrangeButton}"/>

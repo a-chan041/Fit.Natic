@@ -8,23 +8,23 @@
              Disappearing="ContentPage_Disappearing" BackgroundColor="White">
     <!--Pages can be added as references or inline-->
      <StackLayout>
-         <Label Text="Activity Stats" HorizontalOptions="Center" Grid.Row="2" VerticalOptions="Start" TextColor="#707070" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"/>
+         <Label Text="Activity Stats"  HorizontalOptions="Center" Grid.Row="2" VerticalOptions="Start" Style = "{StaticResource TitleLabel}"/>
          <ScrollView>
              <StackLayout>
-             <Label Text= "Daily Progress" Style="{StaticResource TitleLabel}" />
+             <Label Text= "Daily Progress" Style="{StaticResource Label}" HorizontalOptions="Center" />
              <forms:ChartView x:Name = "TodayChart" HeightRequest="250" WidthRequest="250" />
              <Grid Margin="0,25">
                    <Grid.RowDefinitions>
                         <RowDefinition Height="20" />
                         <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
+                  </Grid.RowDefinitions>
                          <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                    <Label Text= "Current Week Progress"  Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
-                    <forms:ChartView x:Name = "WeekChart"  HeightRequest="150" WidthRequest="150" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
-                    <Label Text= "Current Month Progress" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
+                    <Label Text= "Current Week Progress"  Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Grid.RowSpan="2" Style="{StaticResource Label}" FontSize="16"/>
+                    <forms:ChartView x:Name = "WeekChart"  HeightRequest="150" WidthRequest="150"  Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
+                    <Label Text= "Current Month Progress" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Grid.RowSpan="2" Style="{StaticResource Label}" FontSize="16"/>
                     <forms:ChartView x:Name = "MonthChart" HeightRequest="150" WidthRequest="150" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
 
              </Grid>

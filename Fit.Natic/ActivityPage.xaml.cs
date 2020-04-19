@@ -20,6 +20,8 @@ namespace Fit.Natic
             if (App.firstTimeLaunched == true)
             {
                 Navigation.PushAsync(new Page1());
+                DisplayAlert("Hey!", "Welcome to Fit.Natic, your own personal fitness calculator. \nFill out your profile and get logging! " +
+                    "\nOur Activity page will show you how you're doing.", "Hi!");
             }
 
             daily_stats = new Performance.Daily(0, 0, 0);
@@ -41,7 +43,8 @@ namespace Fit.Natic
                 {
                     Label = "Sleep (hrs)",
                     ValueLabel = App.todaysTarget.actualSleep.ToString(),
-                    Color = SKColor.Parse("#2eb9db")
+                    Color = SKColor.Parse("#F57A39")
+                    
                 },
 
 
@@ -49,14 +52,14 @@ namespace Fit.Natic
                 {
                     Label = "Calories",
                     ValueLabel = App.todaysTarget.actualCalories.ToString(),
-                    Color = SKColor.Parse("#e63076")
+                    Color = SKColor.Parse("#E16D01")
                 },
 
                 new Entry(daily_stats.WorkoutDeficit)
                 {
                     Label = "Workout (min)",
                     ValueLabel =  App.todaysTarget.actualWorkout.ToString(),
-                    Color = SKColor.Parse("#a5ed18")
+                    Color = SKColor.Parse("#CC6D3A")
                 }
             };
 
@@ -65,18 +68,18 @@ namespace Fit.Natic
                 new Entry(weekly_stats.SleepDeficit)
                 {
 
-                  Color = SKColor.Parse("#70fbf0")
+                  Color = SKColor.Parse("#F57A39")
                 },
 
 
                 new Entry(weekly_stats.CalorieDeficit)
                 {
-                    Color = SKColor.Parse("#cc3366")
+                    Color = SKColor.Parse("#E16D01")
                 },
 
                 new Entry(weekly_stats.WorkoutDeficit)
                 {
-                    Color = SKColor.Parse("#c3e949")
+                    Color = SKColor.Parse("#CC6D3A")
                 }
             };
 
@@ -85,18 +88,18 @@ namespace Fit.Natic
                 new Entry(monthly_stats.SleepDeficit)
                 {
 
-                    Color = SKColor.Parse("#70fbf0")
+                    Color = SKColor.Parse("#F57A39")
                 },
 
 
                 new Entry(monthly_stats.CalorieDeficit)
                 {
-                    Color = SKColor.Parse("#cc3366")
+                    Color = SKColor.Parse("#E16D01")
                 },
 
                 new Entry(monthly_stats.WorkoutDeficit)
                 {
-                    Color = SKColor.Parse("#c3e949")
+                    Color = SKColor.Parse("#CC6D3A")
                 }
             };
 

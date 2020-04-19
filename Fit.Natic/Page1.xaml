@@ -7,33 +7,63 @@
              x:Class="Fit.Natic.Page1">
     <ContentPage.Content>
         <StackLayout>
-           
-            <Label Text="Create Profile" Padding="7"  TextColor="#707070" FontFamily="Quicksand-Bold.ttf#Quicksand-Bold"></Label>
+            <ScrollView>
+                <Grid Padding="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Create Profile" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                           Style = "{StaticResource TitleLabel}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"></Label>
+                 
+                    <Entry x:Name ="NameEntry" Placeholder="First Name" Style="{StaticResource Entry}" Grid.Row="2" Grid.Column="0" 
+                           ClearButtonVisibility="WhileEditing" VerticalOptions="Center"/>
+                    <!--<Label Text="Gender" Grid.Row="2" Grid.Column="5"  VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>-->
+                    <Entry x:Name ="GenderEntry" Placeholder="Gender" Style="{StaticResource Entry}" Grid.Row="2" Grid.Column="1" 
+                           ClearButtonVisibility="WhileEditing" VerticalOptions="Center"/>
+                    
+                    <Entry x:Name="HeightEntry" Keyboard="Numeric" Placeholder="Height(cm)" Style="{StaticResource Entry}" 
+                           Grid.Row="3" Grid.Column="0" ClearButtonVisibility="WhileEditing" VerticalOptions="Center"/>
+                    <Entry x:Name="WeightEntry" Keyboard = "Numeric" Placeholder="Weight(lbs)" Style="{StaticResource Entry}" 
+                           Grid.Row="3" Grid.Column="1" ClearButtonVisibility="WhileEditing" VerticalOptions="Center"/>
 
-            <Entry x:Name ="NameEntry" Placeholder="Name" Style="{StaticResource Entry}"  ClearButtonVisibility="WhileEditing"/>
-            
-            <Entry x:Name ="GenderEntry" Placeholder="Gender" Style="{StaticResource Entry}"  ClearButtonVisibility="WhileEditing"/>
-            
-            <Entry x:Name="HeightEntry" Keyboard="Numeric" Placeholder="Height" Style="{StaticResource Entry}"  ClearButtonVisibility="WhileEditing"/>
-            
-            <Entry x:Name="WeightEntry" Keyboard = "Numeric" Placeholder="Weight" Style="{StaticResource Entry}"  ClearButtonVisibility="WhileEditing"/>
-            
-            
-            <Entry x:Name="WorkoutTarget" Keyboard="Numeric" Placeholder="Workout Goal(min)" Style="{StaticResource Entry}"  ClearButtonVisibility="WhileEditing"/>
+                    <Entry x:Name="WorkoutTarget" Keyboard="Numeric" Placeholder="Workout Goal (mins)" Style="{StaticResource Entry}" 
+                           Grid.Row="4" Grid.Column="0" ClearButtonVisibility="WhileEditing" VerticalOptions="Center"/>
+                    
+                    <Label Text="Calorie Target" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="EndAndExpand" 
+                           Style="{StaticResource Label}" HorizontalOptions="Center"/>
+                     <Slider x:Name="CalorieSlider" ValueChanged="OnSliderValueChanged" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource Slider}" 
+                            Minimum="0" Maximum="10000" VerticalOptions="Center"/>
+                     <Label x:Name="CalorieValueLabel" Text="0" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                            VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Label}" />
+                    <!--Label x:Name="displayLabel" Text = "" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="5"/-->
+                     <Label Text="Sleep Target" Grid.Row="8" Grid.Column="0"  Grid.ColumnSpan="2" VerticalOptions="EndAndExpand" 
+                           Style="{StaticResource Label}" HorizontalOptions="Center"/>
+                    <Slider x:Name="SleepSlider" ValueChanged="OnSleepValueChanged" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource Slider}"
+                            Maximum="12" VerticalOptions="Center" />
+                    <Label x:Name="SleepValueLabel" Text="0" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Label}"/>
+                    <Button Text="Save Info" Clicked="Button_Clicked" 
+                            Grid.Row="11"  Grid.Column="0" Grid.ColumnSpan="2"  Padding="5" VerticalOptions="Center" Style="{StaticResource OrangeButton}" />
+                   
 
-            <Label Text="Calorie Target"  VerticalOptions="EndAndExpand"  Padding="7" Style="{StaticResource Label}"/>
-            
-            <Slider x:Name="CalorieSlider" ValueChanged="OnSliderValueChanged" Grid.Row="7"  Style="{StaticResource Slider}" Minimum="0" Maximum="10000"/>
-
-            <Label x:Name="CalorieLabel" Text="0"  Padding="7"/>
-            
-            <Label Text="Sleep Target"   VerticalOptions="EndAndExpand" Style="{StaticResource Label}"/>
-            
-            <Slider x:Name="SleepSlider" ValueChanged="OnSleepValueChanged"  Style="{StaticResource Slider}" Maximum="12" />
-
-            <Label x:Name="SleepValue" Text="0" Padding="7" />
-            
-            <Button Text="Save Info" Clicked="Button_Clicked" BackgroundColor="Blue" TextColor="White" FontSize="18"  Padding="7"/>
-        </StackLayout>
+            </Grid>
+        </ScrollView>
+    </StackLayout>
     </ContentPage.Content>
 </ContentPage>

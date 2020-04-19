@@ -16,7 +16,7 @@ namespace Fit.Natic
         {
             if (App.firstTimeLaunched == true || App.resourcesPageViewed == false)
             {
-           //     DisplayAlert("Resources", "Use this page to find recipes, workouts, and calorie calculators", "OK");
+                 //DisplayAlert("Resources", "Use this page to find recipes, workouts, and calorie calculators", "OK");
                 App.resourcesPageViewed = true;
             }
         }
